@@ -282,7 +282,7 @@ a.card:hover{ border-color:var(--fg); transform:translateY(-3px); }
 /* Ruled column list: heading over a top rule, as on the deck's naming slide. */
 .ruled{ display:grid; gap:clamp(16px,2vw,28px); }
 .ruled > div{ border-top:2px solid var(--fg); padding-top:clamp(16px,1.8vw,24px); }
-.ruled__k{ font-family:var(--font-mono); font-size:clamp(18px,1.8vw,26px); font-weight:600; color:var(--accent); line-height:1.2; }
+.ruled .ruled__k{ font-family:var(--font-mono); font-size:clamp(18px,1.8vw,26px); font-weight:600; color:var(--accent); line-height:1.2; }
 .ruled h3{ margin-top:10px; }
 .ruled p{ color:var(--muted); font-size:15px; margin-top:8px; }
 
@@ -368,6 +368,27 @@ a.card:hover{ border-color:var(--fg); transform:translateY(-3px); }
 .org__box b{ display:block; font-size:16px; }
 .org__box b .mono{ color:var(--accent); margin-right:8px; }
 .org__box span{ display:block; font-size:14px; color:var(--muted); margin-top:4px; }
+
+/* ---- 17b. The "+" statement --------------------------------------------- */
+/* The + from the AID+ mark, set large: AID adds to a studio, it never subtracts. */
+.plus-head{ display:flex; align-items:center; gap:clamp(20px,3vw,44px); }
+.plus-mark{ flex:0 0 auto; width:clamp(56px,7vw,104px); height:auto; fill:var(--brand); }
+@media (max-width:600px){ .plus-head{ flex-direction:column; align-items:flex-start; } }
+.ruled .ruled__k--plus{ font-size:clamp(28px,2.6vw,36px); line-height:1; color:var(--brand); }
+
+/* ---- 17c. Partner studios ----------------------------------------------- */
+/* Rendered from AID.partners in site.js; placeholder cards while it is empty. */
+.partners{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(12px,1.6vw,20px); }
+@media (max-width:900px){ .partners{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+.partner{ margin:0; display:flex; flex-direction:column; border:1px solid var(--line); background:var(--bg-2); }
+.partner__logo{ aspect-ratio:3/2; display:grid; place-items:center; padding:clamp(16px,2vw,28px);
+  border-bottom:1px solid var(--line); background:var(--bg-2); }
+.partner__logo img{ max-width:100%; max-height:100%; object-fit:contain; }
+.partner__logo .mono{ color:var(--faint); }
+.partner figcaption{ padding:clamp(14px,1.6vw,20px); }
+.partner b{ display:block; font-size:16px; font-weight:700; }
+.partner span.partner__m{ display:block; font-size:13.5px; color:var(--muted); margin-top:4px; }
+.partner--todo .partner__logo{ background:repeating-linear-gradient(135deg, transparent 0 10px, color-mix(in srgb, var(--line) 55%, transparent) 10px 11px); }
 
 /* ---- 18. CTA band ------------------------------------------------------- */
 .cta{ position:relative; overflow:hidden; }

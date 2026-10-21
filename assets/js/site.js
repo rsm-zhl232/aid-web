@@ -36,6 +36,7 @@ AID.footer = [
     h: { en: "Company", zh: "公司", hant: "公司" },
     links: [
       { href: "about.html", en: "About AID", zh: "关于 AID", hant: "關於 AID" },
+      { href: "index.html#partners", en: "Our partners", zh: "合作大师", hant: "合作大師" },
       { href: "contact.html", en: "Contact", zh: "联系我们", hant: "聯絡我們" },
       { href: "https://www.tgkw.com", en: "Tiangong Kaiwu", zh: "天宫开物", hant: "天宮開物", ext: true },
     ],
@@ -54,6 +55,18 @@ AID.contact = {
     hant: "深圳市東方河套科技大廈 7 樓",
   },
 };
+
+/* Partner studios, shown on the home page (#partners). One entry per studio:
+     {
+       name:   { zh: "某某", hant: "某某", en: "Name" },         // the designer
+       studio: { zh: "某某设计", hant: "某某設計", en: "Studio" }, // optional
+       city:   { zh: "深圳", hant: "深圳", en: "Shenzhen" },       // optional
+       logo:   "assets/img/partners/xxx.png",                       // optional
+     }
+   hant / en may be left out: they fall back to zh. While the list is empty,
+   PARTNER_SLOTS placeholder cards marked "to be supplied" show instead. */
+AID.partners = [];
+var PARTNER_SLOTS = 4;
 
 /* ---- Logo --------------------------------------------------------------- */
 /* AID+ mark. Letters take currentColor; the red I is fixed brand red. */
@@ -266,6 +279,36 @@ function renderContactSlots() {
   });
 }
 
+/* ---- Partner studios ---------------------------------------------------- */
+function renderPartners() {
+  var host = document.querySelector("[data-partners]");
+  if (!host) return;
+  var list = AID.partners || [];
+  if (!list.length) {
+    var card =
+      '<figure class="partner partner--todo"><div class="partner__logo"><span class="mono">LOGO</span></div>' +
+      "<figcaption><b>" + AID.todo() + '</b><span class="partner__m">' +
+      AID.bi({ en: "Studio · City", zh: "工作室 · 城市", hant: "工作室 · 城市" }) +
+      "</span></figcaption></figure>";
+    host.innerHTML = new Array(PARTNER_SLOTS + 1).join(card);
+    return;
+  }
+  host.innerHTML = list
+    .map(function (p) {
+      var logo = p.logo
+        ? '<img src="' + AID.esc(p.logo) + '" alt="" loading="lazy">'
+        : '<span class="mono">' + AID.bi(p.name) + "</span>";
+      var meta = [p.studio, p.city].filter(Boolean).map(AID.bi).join(" · ");
+      return (
+        '<figure class="partner"><div class="partner__logo">' + logo + "</div>" +
+        "<figcaption><b>" + AID.bi(p.name) + "</b>" +
+        (meta ? '<span class="partner__m">' + meta + "</span>" : "") +
+        "</figcaption></figure>"
+      );
+    })
+    .join("");
+}
+
 /* ---- Reveal on scroll --------------------------------------------------- */
 function initReveal() {
   var els = document.querySelectorAll(".reveal");
@@ -374,6 +417,7 @@ document.addEventListener("DOMContentLoaded", function () {
   renderHeader();
   renderFooter();
   renderContactSlots();
+  renderPartners();
   initContactForm();
   initReveal();
 });

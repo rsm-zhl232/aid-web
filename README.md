@@ -9,7 +9,7 @@ python3 -m http.server 8080      # 然后访问 http://localhost:8080
 ## 目录
 
 ```
-index.html       首页：定位、出发点、传统配合对比、一辅两主、八项承诺、服务分层、技术底座
+index.html       首页：定位、出发点、加法不是减法、传统配合对比、一辅两主、八项承诺、合作大师、服务分层、技术底座
 services.html    服务：一辅两主、三档服务包、AI 能力、服务标准
 process.html     工作流程：启动会、四阶段（0.5 / 1.0 / 2.0 / 2.x）、修改机制、出图前检查
 technology.html  技术与团队：DFC/TAI/ADC/飞舟/QDC/DRP、项目组织、四库数据资产
@@ -50,8 +50,23 @@ JS 里生成的文字（导航、页脚、表单提示）在 `assets/js/site.js`
 - 不列案例；AID 是新品牌，以「先试做一个空间，试做费可抵扣」代替
 - 内部内容（薪酬、分账、单价、红线、考核）未上网站
 
+## 合作大师
+
+首页「合作大师」板块由 `assets/js/site.js` 顶部的 `AID.partners` 渲染，每位大师一行：
+
+```js
+AID.partners = [
+  { name: { zh: "某某" }, studio: { zh: "某某设计" }, city: { zh: "深圳" },
+    logo: "assets/img/partners/xxx.png" },
+];
+```
+
+`hant` / `en` 可不填（自动用简体）；`studio`、`city`、`logo` 都是可选的。Logo 放进 `assets/img/partners/`。
+列表为空时显示 4 张「【待补】」占位卡，数量由 `PARTNER_SLOTS` 控制。
+
 ## 待补
 
 - 联系邮箱、电话、详细地址：在 `assets/js/site.js` 顶部 `AID.contact` 填写。留空时页面显示「【待补】」，表单提示邮箱未开通
 - 正式域名、ICP 备案号（页脚）、分享图 og:image
 - PNG 版 favicon（目前只有 SVG）
+- 合作大师名单与 Logo（见上一节）
