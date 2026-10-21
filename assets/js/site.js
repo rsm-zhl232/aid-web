@@ -48,7 +48,11 @@ AID.contact = {
   email: "",
   phone: "",
   phoneIntl: "",
-  address: { en: "Shenzhen headquarters", zh: "深圳总部", hant: "深圳總部" },
+  address: {
+    en: "7F, Dongfang Hetao Technology Building, Shenzhen",
+    zh: "深圳市东方河套科技大厦 7 楼",
+    hant: "深圳市東方河套科技大廈 7 樓",
+  },
 };
 
 /* ---- Logo --------------------------------------------------------------- */
