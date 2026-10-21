@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>联系我们 — AID 艾匠科技</title>
+<meta name="description" content="先选一个空间试做，按标准价收费；签整个项目时试做费从合同里抵扣。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AID 艾匠科技">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="联系我们 — AID 艾匠科技">
+<meta property="og:description" content="先选一个空间试做，按标准价收费；签整个项目时试做费从合同里抵扣。">
+<link rel="icon" href="assets/img/aid-mark.svg" type="image/svg+xml">
+<script>
+/* Decide the language before first paint. assets/js/site.js repeats this
+   logic (AID.pickLang / AID.applyLang) — if you change one, change the other. */
+(function(){try{var k={zh:"zh-CN",hant:"zh-Hant",en:"en"},q=new URLSearchParams(location.search).get("lang"),
+s=localStorage.getItem("aid-lang"),n=(navigator.language||"zh").toLowerCase(),
+l=k[q]?q:k[s]?s:/^zh-(tw|hk|mo|hant)/.test(n)?"hant":n.indexOf("en")===0?"en":"zh",d=document.documentElement;
+d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header data-hdr></header>
+
+<main>
+  <section class="phero stripes" data-surface="dark">
+    <div class="wrap">
+      <p class="eyebrow reveal"><span data-lang="en">Contact</span><span data-lang="zh">联系我们</span><span data-lang="hant">聯絡我們</span></p>
+      <h1 class="h1 reveal" data-delay="60" style="max-width:18ch">
+        <span data-lang="en">Start with one space</span>
+        <span data-lang="zh">先从一个空间开始</span><span data-lang="hant">先從一個空間開始</span>
+      </h1>
+      <p class="lede reveal" data-delay="120">
+        <span data-lang="en">AID is a new brand. Rather than ask you to trust a portfolio, we suggest a trial: choose one space, we deliver it at the standard rate, and if you go on to sign the whole project, the trial fee is credited toward the contract.</span>
+        <span data-lang="zh">AID 是新品牌，背后是天宫开物的自研软件和团队。您可以先选一个空间试做，按标准价收费；后面签整个项目，试做费从合同里抵扣。</span><span data-lang="hant">AID 是新品牌，背後是天宮開物的自研軟體和團隊。您可以先選一個空間試做，按標準價收費；後面簽整個項目，試做費從合約裡折抵。</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid grid--sidecar">
+      <div>
+        <h2 class="h3 reveal"><span data-lang="en">Three questions we'll ask first</span><span data-lang="zh">初次沟通，我们会先问三个问题</span><span data-lang="hant">初次溝通，我們會先問三個問題</span></h2>
+        <ol class="steps steps--solo mt-m reveal" data-delay="40">
+          <li><h3><span data-lang="en">Who produces your construction drawings today?</span><span data-lang="zh">您现在施工图是谁在做？</span><span data-lang="hant">您現在施工圖是誰在做？</span></h3></li>
+          <li><h3><span data-lang="en">What caused the most trouble on your last project: revisions, coordination, or a built result that did not match the design?</span><span data-lang="zh">最近一个项目，最头疼的是什么？改图、协调、还是现场做出来不像？</span><span data-lang="hant">最近一個項目，最頭疼的是什麼？改圖、協調、還是現場做出來不像？</span></h3></li>
+          <li><h3><span data-lang="en">When a client asks for changes, how are they charged today?</span><span data-lang="zh">业主提修改，现在是怎么收费的？</span><span data-lang="hant">業主提修改，現在是怎麼收費的？</span></h3></li>
+        </ol>
+
+        <h2 class="h3 mt-l reveal"><span data-lang="en">Reach us directly</span><span data-lang="zh">直接联系</span><span data-lang="hant">直接聯絡</span></h2>
+        <dl class="deflist reveal mt-m" data-delay="60">
+          <div><dt><span data-lang="en">Email</span><span data-lang="zh">邮箱</span><span data-lang="hant">電子郵件</span></dt><dd data-contact="email"></dd></div>
+          <div><dt><span data-lang="en">Phone</span><span data-lang="zh">电话</span><span data-lang="hant">電話</span></dt><dd data-contact="phone"></dd></div>
+          <div><dt><span data-lang="en">Office</span><span data-lang="zh">办公地点</span><span data-lang="hant">辦公地點</span></dt><dd data-contact="address"></dd></div>
+        </dl>
+      </div>
+
+      <form class="reveal" data-delay="120" id="aid-form">
+        <div class="grid grid--2" style="gap:20px">
+          <div class="field">
+            <label for="f-name"><span data-lang="en">Name</span><span data-lang="zh">姓名</span><span data-lang="hant">姓名</span></label>
+            <input id="f-name" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-studio"><span data-lang="en">Studio</span><span data-lang="zh">工作室</span><span data-lang="hant">工作室</span></label>
+            <input id="f-studio" name="studio" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="f-mail"><span data-lang="en">Email</span><span data-lang="zh">邮箱</span><span data-lang="hant">電子郵件</span></label>
+            <input id="f-mail" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-phone"><span data-lang="en">Phone / WeChat</span><span data-lang="zh">电话 / 微信</span><span data-lang="hant">電話 / 即時通訊</span></label>
+            <input id="f-phone" name="phone" autocomplete="tel">
+          </div>
+        </div>
+        <div class="field mt-m">
+          <label for="f-topic"><span data-lang="en">What you are looking for</span><span data-lang="zh">咨询方向</span><span data-lang="hant">諮詢方向</span></label>
+          <select id="f-topic" name="topic">
+            <option value="trial" data-zh="试做一个空间" data-en="Trial on one space" data-hant="試做一個空間">试做一个空间</option>
+            <option value="basic" data-zh="基础包" data-en="Basic package" data-hant="基礎包">基础包</option>
+            <option value="standard" data-zh="标准包" data-en="Standard package" data-hant="標準包">标准包</option>
+            <option value="full" data-zh="全周期落地包" data-en="Full-cycle package" data-hant="全週期落地包">全周期落地包</option>
+            <option value="other" data-zh="其他" data-en="Something else" data-hant="其他">其他</option>
+          </select>
+        </div>
+        <div class="field mt-m">
+          <label for="f-msg"><span data-lang="en">The project</span><span data-lang="zh">项目情况</span><span data-lang="hant">項目情況</span></label>
+          <textarea id="f-msg" name="message" required></textarea>
+          <small><span data-lang="en">Project type, floor area, city, current stage and timeline are enough to get started.</span><span data-lang="zh">项目类型、面积、城市、所处阶段与时间节点，写这些就够开始。</span><span data-lang="hant">項目類型、面積、城市、所處階段與時間節點，寫這些就夠開始。</span></small>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn--primary" type="submit">
+            <span data-lang="en">Send</span><span data-lang="zh">提交</span><span data-lang="hant">提交</span> <span class="arw">→</span></button>
+        </div>
+        <p class="small form-note mt-s" role="status" hidden style="color:var(--accent)"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer data-ftr></footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
