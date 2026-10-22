@@ -181,11 +181,18 @@ html[data-lang="hant"]{ --font-sans: -apple-system, BlinkMacSystemFont, "Segoe U
   position:fixed; inset:0 0 auto 0; z-index:100; color:#EDECE8;
   border-bottom:1px solid transparent; transition:.3s var(--ease);
 }
+/* Frosted glass once the page scrolls: a translucent tint, a strong blur and
+   saturation boost so what passes underneath stays colourful but soft, a
+   hairline edge and a soft shadow for thickness. */
 .hdr.is-stuck{
-  background:rgba(27,28,30,.92);
-  backdrop-filter:blur(14px) saturate(140%);
-  -webkit-backdrop-filter:blur(14px) saturate(140%);
-  border-bottom-color:#3A3B3E;
+  background:rgba(27,28,30,.62);
+  backdrop-filter:blur(22px) saturate(180%);
+  -webkit-backdrop-filter:blur(22px) saturate(180%);
+  border-bottom-color:rgba(255,255,255,.10);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 10px 30px rgba(0,0,0,.18);
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .hdr.is-stuck{ background:rgba(27,28,30,.95); }
 }
 .hdr__in{ display:flex; align-items:center; gap:clamp(20px,3vw,48px); height:68px; }
 .brand{ display:flex; align-items:center; gap:14px; flex:0 0 auto; color:#ECEBE7; }
@@ -228,7 +235,7 @@ html[data-lang="hant"] .brand__txt small{ font-family:var(--font-sans); font-siz
 @media (max-width:1180px){
   .nav{
     position:fixed; inset:68px 0 auto 0; flex-direction:column; align-items:stretch; gap:0;
-    background:#1B1C1E; border-bottom:1px solid #3A3B3E;
+    background:rgba(27,28,30,.97); border-bottom:1px solid #3A3B3E;
     padding:8px var(--gutter) 24px; margin:0;
     transform:translateY(-8px); opacity:0; pointer-events:none; transition:.28s var(--ease);
   }
@@ -497,9 +504,14 @@ a.card:hover{ border-color:var(--fg); transform:translateY(-3px); }
 .hdr--light .btn--ghost:hover{ border-color:var(--fg); }
 .hdr--light .burger span,.hdr--light .burger span::before,.hdr--light .burger span::after{ background:var(--fg); }
 .hdr--light .burger[aria-expanded="true"] span{ background:transparent; }
-.hdr--light.is-stuck{ background:rgba(242,241,237,.94); border-bottom-color:var(--line); }
+.hdr--light.is-stuck{ background:rgba(242,241,237,.5);
+  backdrop-filter:blur(26px) saturate(190%); -webkit-backdrop-filter:blur(26px) saturate(190%); border-bottom-color:rgba(27,28,30,.10);
+  box-shadow:inset 0 -1px 0 rgba(255,255,255,.55), 0 10px 30px rgba(27,28,30,.08); }
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .hdr--light.is-stuck{ background:rgba(242,241,237,.96); }
+}
 @media (max-width:1180px){
-  .hdr--light .nav{ background:var(--bg); border-bottom-color:var(--line); }
+  .hdr--light .nav{ background:rgba(242,241,237,.97); border-bottom-color:var(--line); }
   .hdr--light .nav a{ border-bottom-color:var(--line-soft); }
 }
 
