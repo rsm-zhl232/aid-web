@@ -227,7 +227,9 @@ function renderHeader() {
     })
     .join("");
 
-  host.className = "hdr";
+  /* <body data-header="light"> = page opens on paper, not ink: dark header text.
+     (Not data-hdr: that attribute marks the header slot itself.) */
+  host.className = "hdr" + (document.body.dataset.header === "light" ? " hdr--light" : "");
   host.innerHTML =
     '<div class="wrap hdr__in">' +
     brandHTML() +
