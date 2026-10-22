@@ -1,5 +1,11 @@
 # AID-web — AID 艾匠科技官网
 
+**网站地址：https://rsm-zhl232.github.io/aid-web/**
+
+指定语言打开：[简体](https://rsm-zhl232.github.io/aid-web/?lang=zh) · [繁體](https://rsm-zhl232.github.io/aid-web/?lang=hant) · [English](https://rsm-zhl232.github.io/aid-web/?lang=en)
+
+推送到 `main` 后 GitHub Pages 自动重新发布，约一分钟后线上更新。
+
 纯静态站，无依赖，结构沿用 `tgkw-web`。三种语言：简体（默认）、繁體（港台通用）、English，页头可切换。本地预览：
 
 ```sh
@@ -17,7 +23,7 @@ about.html       关于：命名释义、标志释义、使命与分工、核心
 contact.html     联系：先试做一个空间、初次沟通三问、表单（mailto）
 
 assets/css/main.css   设计系统。顶部 tokens：砖红 #A8342B、石墨灰 #2B2C2F、墨 #1B1C1E、纸 #F2F1EE
-assets/js/site.js     页头、页脚、导航、中英切换、联系方式、表单
+assets/js/site.js     页头、页脚、导航、语言切换（简 / 繁 / EN）、联系方式、合作大师、表单
 assets/img/           aid-logo.svg（浅底）、aid-logo-white.svg（深底）、aid-mark.svg（图标 / favicon）
 ```
 
@@ -66,7 +72,7 @@ AID.partners = [
 
 ## 待补
 
-- 联系邮箱、电话、详细地址：在 `assets/js/site.js` 顶部 `AID.contact` 填写。留空时页面显示「【待补】」，表单提示邮箱未开通
+- 联系邮箱、电话：在 `assets/js/site.js` 顶部 `AID.contact` 填写（地址已填：东方河套科技大厦 7 楼）。留空时页面显示「【待补】」，表单提示邮箱未开通
 - 正式域名、ICP 备案号（页脚）、分享图 og:image
 - PNG 版 favicon（目前只有 SVG）
 - 合作大师名单与 Logo（见上一节）
