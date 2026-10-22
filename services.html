@@ -35,11 +35,11 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
 <link rel="preload" href="assets/fonts/plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/main.css">
 </head>
-<body>
+<body data-header="light">
 <header data-hdr></header>
 
 <main>
-  <section class="phero stripes" data-surface="dark">
+  <section class="phero phero--paper">
     <div class="wrap">
       <p class="eyebrow reveal"><span data-lang="en">Services</span><span data-lang="zh">服务</span><span data-lang="hant">服務</span></p>
       <h1 class="h1 reveal" data-delay="60" style="max-width:18ch">
@@ -50,14 +50,14 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
         <span data-lang="en">We're not an outsourcer or a subcontractor. We are your studio's own digital delivery team: supporting you in the scheme stage, then leading the construction drawings and the technical work on site.</span>
         <span data-lang="zh">不是外包，不是分包，而是大师自己的数字建造团队：方案阶段做辅助，施工图和现场阶段由 AID 主力承担。</span><span data-lang="hant">不是外包，不是分包，而是大師自己的數位建造團隊：方案階段做輔助，施工圖和現場階段由 AID 主力承擔。</span>
       </p>
+      <div class="sheetbar reveal" aria-hidden="true"><span class="sheetbar__logo">AID+</span><span>SHEET <b>A-01</b></span><span>SERVICES</span><span>DFC 2.0</span></div>
     </div>
   </section>
 
   <!-- ============ MODEL ============ -->
   <section class="section" id="model">
     <div class="wrap">
-      <p class="eyebrow reveal"><span class="num">01</span>
-        <span data-lang="en">How we engage</span><span data-lang="zh">服务模式</span><span data-lang="hant">服務模式</span></p>
+      <p class="eyebrow reveal"><span data-lang="en">How we engage</span><span data-lang="zh">服务模式</span><span data-lang="hant">服務模式</span></p>
       <h2 class="h1 reveal" style="max-width:22ch">
         <span data-lang="en">Our role at each stage</span>
         <span data-lang="zh">一辅两主</span><span data-lang="hant">一輔兩主</span>
@@ -81,11 +81,53 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
     </div>
   </section>
 
-  <!-- ============ PACKAGES ============ -->
-  <section class="section" data-surface="alt" id="packages">
+  <!-- ============ COMPARISON ============ -->
+  <section class="section section--rule" id="compare">
     <div class="wrap">
-      <p class="eyebrow reveal"><span class="num">02</span>
-        <span data-lang="en">Service packages</span><span data-lang="zh">服务分层</span><span data-lang="hant">服務分層</span></p>
+      <p class="eyebrow reveal"><span data-lang="en">The difference</span><span data-lang="zh">不同在哪</span><span data-lang="hant">不同在哪</span></p>
+      <div class="grid grid--sidecar">
+        <h2 class="h1 reveal">
+          <span data-lang="en">Not faster drawings. Fewer surprises.</span>
+          <span data-lang="zh">不是比谁画得快，是比谁看得见、改得动、错得少</span><span data-lang="hant">不是比誰畫得快，是比誰看得見、改得動、錯得少</span>
+        </h2>
+        <p class="lede reveal" data-delay="60">
+          <span data-lang="en">Every studio hands its construction drawings to someone. The usual route passes the work down a chain of teams and tools: 3D for the scheme, 2D for the drawings. Each handover distorts the intent a little, and the errors travel all the way to site. At AID, everyone works on one model, from design to delivery.</span>
+          <span data-lang="zh">大师都会把施工图交出去做，问题是交给谁。传统做法是多个软件、多个团队一层层交接：方案三维，施工图二维，每交接一次理解就走样一次，错漏碰缺一路带到工地。AID 从设计到落地，所有人始终在同一个三维模型上。</span><span data-lang="hant">大師都會把施工圖交出去做，問題是交給誰。傳統做法是多個軟體、多個團隊一層層交接：方案三維，施工圖二維，每交接一次理解就走樣一次，錯漏與碰撞問題一路帶到工地。AID 從設計到落地，所有人始終在同一個三維模型上。</span>
+        </p>
+      </div>
+      <div class="cmp-wrap mt-l reveal">
+        <table class="cmp">
+          <thead><tr>
+            <th scope="col"><span class="sr-only">Aspect</span></th>
+            <th scope="col"><span data-lang="en">Typical outsourced drawings</span><span data-lang="zh">传统施工图配合</span><span data-lang="hant">傳統施工圖配合</span></th>
+            <th scope="col" class="is-us"><span data-lang="en">AID: one model throughout</span><span data-lang="zh">AID · 一个模型做到底</span><span data-lang="hant">AID · 一個模型做到底</span></th>
+          </tr></thead>
+          <tbody>
+            <tr><th scope="row"><span data-lang="en">Way of working</span><span data-lang="zh">工作方式</span><span data-lang="hant">工作方式</span></th>
+              <td><span data-lang="en">2D CAD; nothing to review until the drawings are done</span><span data-lang="zh">CAD 二维，画完才能审图</span><span data-lang="hant">CAD 二維，畫完才能審圖</span></td>
+              <td class="is-us"><span data-lang="en">Model-driven 3D; review and decide as it is built</span><span data-lang="zh">三维模型驱动，过程中就能看、能审、能定</span><span data-lang="hant">三維模型驅動，過程中就能看、能審、能定</span></td></tr>
+            <tr><th scope="row"><span data-lang="en">Delivery</span><span data-lang="zh">交接</span><span data-lang="hant">交接</span></th>
+              <td><span data-lang="en">Many tools, many teams, layer by layer</span><span data-lang="zh">多软件、多团队逐层交接</span><span data-lang="hant">多軟體、多團隊逐層交接</span></td>
+              <td class="is-us"><span data-lang="en">Everyone on one shared model, from design to delivery</span><span data-lang="zh">从设计到落地，所有人在同一个主模型上</span><span data-lang="hant">從設計到落地，所有人在同一個主模型上</span></td></tr>
+            <tr><th scope="row"><span data-lang="en">Intent</span><span data-lang="zh">理解</span><span data-lang="hant">理解</span></th>
+              <td><span data-lang="en">Distorted a little at every handover</span><span data-lang="zh">每交接一次，理解走样一次</span><span data-lang="hant">每交接一次，理解走樣一次</span></td>
+              <td class="is-us"><span data-lang="en">One model throughout, so the intent is never lost</span><span data-lang="zh">一个模型贯穿始终，设计意图不丢</span><span data-lang="hant">一個模型貫穿始終，設計意圖不丟</span></td></tr>
+            <tr><th scope="row"><span data-lang="en">Errors</span><span data-lang="zh">错误</span><span data-lang="hant">錯誤</span></th>
+              <td><span data-lang="en">Clashes and omissions reach site: rework, variations, claims</span><span data-lang="zh">错漏碰缺一路延伸到工地：返工、签证、索赔</span><span data-lang="hant">錯漏與碰撞問題一路延伸到工地：返工、追加費用、索賠</span></td>
+              <td class="is-us"><span data-lang="en">Model, drawings and materials always match; sign-off locks them in</span><span data-lang="zh">模型、图纸、物料一致，模型确认即锁定</span><span data-lang="hant">模型、圖紙、物料一致，模型確認即鎖定</span></td></tr>
+            <tr><th scope="row"><span data-lang="en">Changes</span><span data-lang="zh">变更</span><span data-lang="hant">變更</span></th>
+              <td><span data-lang="en">The contractor asks the designer, who asks the outsourcer</span><span data-lang="zh">施工方找大师，大师再找外包，层层转达</span><span data-lang="hant">施工方找大師，大師再找外包，層層轉達</span></td>
+              <td class="is-us"><span data-lang="en">AID handles every change, priced by agreed rules</span><span data-lang="zh">AID 全程承接，按规则计价</span><span data-lang="hant">AID 全程承接，按規則計價</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PACKAGES ============ -->
+  <section class="section section--rule" id="packages">
+    <div class="wrap">
+      <p class="eyebrow reveal"><span data-lang="en">Service packages</span><span data-lang="zh">服务分层</span><span data-lang="hant">服務分層</span></p>
       <div class="grid grid--sidecar">
         <h2 class="h1 reveal">
           <span data-lang="en">Choose your level of service</span>
@@ -147,8 +189,7 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
   <!-- ============ AI ============ -->
   <section class="section" id="ai">
     <div class="wrap">
-      <p class="eyebrow reveal"><span class="num">03</span>
-        <span data-lang="en">AI in practice</span><span data-lang="zh">AI 能力</span><span data-lang="hant">AI 能力</span></p>
+      <p class="eyebrow reveal"><span data-lang="en">AI in practice</span><span data-lang="zh">AI 能力</span><span data-lang="hant">AI 能力</span></p>
       <div class="grid grid--sidecar">
         <h2 class="h1 reveal">
           <span data-lang="en">Where AI actually does the work</span>
@@ -183,10 +224,9 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
   </section>
 
   <!-- ============ STANDARDS ============ -->
-  <section class="section" data-surface="alt" id="standards">
+  <section class="section section--rule" id="standards">
     <div class="wrap">
-      <p class="eyebrow reveal"><span class="num">04</span>
-        <span data-lang="en">Service standards</span><span data-lang="zh">服务标准</span><span data-lang="hant">服務標準</span></p>
+      <p class="eyebrow reveal"><span data-lang="en">Service standards</span><span data-lang="zh">服务标准</span><span data-lang="hant">服務標準</span></p>
       <h2 class="h1 reveal">
         <span data-lang="en">Fast replies, clear answers, everything on record</span>
         <span data-lang="zh">回得快、说得清、有记录</span><span data-lang="hant">回得快、說得清、有記錄</span>
@@ -222,7 +262,7 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
     </div>
   </section>
 
-  <section class="section section--tight cta stripes" data-surface="dark">
+  <section class="section section--tight cta section--rule">
     <div class="wrap cta__in">
       <div>
         <div class="bar reveal"></div>

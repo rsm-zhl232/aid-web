@@ -35,11 +35,11 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
 <link rel="preload" href="assets/fonts/plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/main.css">
 </head>
-<body>
+<body data-header="light">
 <header data-hdr></header>
 
 <main>
-  <section class="phero stripes" data-surface="dark">
+  <section class="phero phero--paper">
     <div class="wrap">
       <p class="eyebrow reveal"><span data-lang="en">Trial on one space</span><span data-lang="zh">试做一个空间</span><span data-lang="hant">試做一個空間</span></p>
       <h1 class="h1 reveal" data-delay="60" style="max-width:18ch">
@@ -53,14 +53,14 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
       <div class="btn-row reveal" data-delay="160">
         <a class="btn btn--primary" href="contact.html?topic=trial"><span data-lang="en">Book a trial</span><span data-lang="zh">预约试做</span><span data-lang="hant">預約試做</span> <span class="arw">→</span></a>
       </div>
+      <div class="sheetbar reveal" aria-hidden="true"><span class="sheetbar__logo">AID+</span><span>SHEET <b>A-06</b></span><span>TRIAL</span><span>DFC 2.0</span></div>
     </div>
   </section>
 
   <!-- ============ HOW ============ -->
   <section class="section" id="how">
     <div class="wrap">
-      <p class="eyebrow reveal"><span class="num">01</span>
-        <span data-lang="en">How it works</span><span data-lang="zh">怎么试</span><span data-lang="hant">怎麼試</span></p>
+      <p class="eyebrow reveal"><span data-lang="en">How it works</span><span data-lang="zh">怎么试</span><span data-lang="hant">怎麼試</span></p>
       <h2 class="h1 reveal" style="max-width:20ch">
         <span data-lang="en">Five steps, on a real space</span>
         <span data-lang="zh">五步，在一个真实空间上走一遍</span><span data-lang="hant">五步，在一個真實空間上走一遍</span>
@@ -81,10 +81,9 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
   </section>
 
   <!-- ============ WHAT YOU GET ============ -->
-  <section class="section" data-surface="alt" id="deliverables">
+  <section class="section section--rule" id="deliverables">
     <div class="wrap">
-      <p class="eyebrow reveal"><span class="num">02</span>
-        <span data-lang="en">What you get</span><span data-lang="zh">试做交付什么</span><span data-lang="hant">試做交付什麼</span></p>
+      <p class="eyebrow reveal"><span data-lang="en">What you get</span><span data-lang="zh">试做交付什么</span><span data-lang="hant">試做交付什麼</span></p>
       <div class="grid grid--sidecar">
         <h2 class="h1 reveal">
           <span data-lang="en">One space, three deliverables, one model</span>
@@ -112,8 +111,7 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
   <!-- ============ TERMS ============ -->
   <section class="section" id="terms">
     <div class="wrap">
-      <p class="eyebrow reveal"><span class="num">03</span>
-        <span data-lang="en">Fees and timing</span><span data-lang="zh">费用与周期</span><span data-lang="hant">費用與週期</span></p>
+      <p class="eyebrow reveal"><span data-lang="en">Fees and timing</span><span data-lang="zh">费用与周期</span><span data-lang="hant">費用與週期</span></p>
       <dl class="deflist reveal">
         <div><dt><span data-lang="en">Fee</span><span data-lang="zh">费用</span><span data-lang="hant">費用</span></dt>
           <dd><span data-lang="en">Charged at the standard rate and agreed in person. If you sign the whole project, the trial fee is credited toward the contract.</span><span data-lang="zh">按标准价收费，具体面谈。签整个项目时，试做费从合同里抵扣。</span><span data-lang="hant">按標準價收費，具體面談。簽整個項目時，試做費從合約裡折抵。</span></dd></div>
@@ -125,7 +123,7 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
     </div>
   </section>
 
-  <section class="section section--tight cta stripes" data-surface="dark">
+  <section class="section section--tight cta section--rule">
     <div class="wrap cta__in">
       <div>
         <div class="bar reveal"></div>

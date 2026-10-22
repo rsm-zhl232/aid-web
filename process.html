@@ -35,11 +35,11 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
 <link rel="preload" href="assets/fonts/plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/main.css">
 </head>
-<body>
+<body data-header="light">
 <header data-hdr></header>
 
 <main>
-  <section class="phero stripes" data-surface="dark">
+  <section class="phero phero--paper">
     <div class="wrap">
       <p class="eyebrow reveal"><span data-lang="en">How we work</span><span data-lang="zh">工作流程</span><span data-lang="hant">工作流程</span></p>
       <h1 class="h1 reveal" data-delay="60" style="max-width:20ch">
@@ -50,6 +50,7 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
         <span data-lang="en">Each stage corresponds to one model version and closes with a signed confirmation. We move on only once it is signed, so every step is traceable.</span>
         <span data-lang="zh">每个阶段对应一个模型版本，以一张签字确认单收口。签了确认单，才进入下一阶段，每一步都有据可查。</span><span data-lang="hant">每個階段對應一個模型版本，以一張簽字確認單結案。簽了確認單，才進入下一階段，每一步都有據可查。</span>
       </p>
+      <div class="sheetbar reveal" aria-hidden="true"><span class="sheetbar__logo">AID+</span><span>SHEET <b>A-02</b></span><span>PROCESS</span><span>DFC 2.0</span></div>
     </div>
   </section>
 
@@ -70,10 +71,9 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
   </section>
 
   <!-- ============ STAGES ============ -->
-  <section class="section" data-surface="alt" id="stages">
+  <section class="section section--rule" id="stages">
     <div class="wrap">
-      <p class="eyebrow reveal"><span class="num">01</span>
-        <span data-lang="en">The four stages</span><span data-lang="zh">标准工作流</span><span data-lang="hant">標準工作流</span></p>
+      <p class="eyebrow reveal"><span data-lang="en">The four stages</span><span data-lang="zh">标准工作流</span><span data-lang="hant">標準工作流</span></p>
       <div class="stages">
         <div class="stage reveal">
           <p class="stage__v">01 · <span data-lang="en">0.5 scheme baseline</span><span data-lang="zh">0.5 方案基准模型</span><span data-lang="hant">0.5 方案基準模型</span></p>
@@ -121,8 +121,7 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
        Replace each placeholder frame with <img src="assets/img/sample/…" alt="…">. -->
   <section class="section" id="sample">
     <div class="wrap">
-      <p class="eyebrow reveal"><span class="num">02</span>
-        <span data-lang="en">One model, three deliverables</span><span data-lang="zh">一个空间，三份成果</span><span data-lang="hant">一個空間，三份成果</span></p>
+      <p class="eyebrow reveal"><span data-lang="en">One model, three deliverables</span><span data-lang="zh">一个空间，三份成果</span><span data-lang="hant">一個空間，三份成果</span></p>
       <div class="grid grid--sidecar">
         <h2 class="h1 reveal">
           <span data-lang="en">Change it once, and all three change together</span>
@@ -147,8 +146,7 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
   <!-- ============ REVISIONS ============ -->
   <section class="section" id="revisions">
     <div class="wrap">
-      <p class="eyebrow reveal"><span class="num">03</span>
-        <span data-lang="en">Revisions</span><span data-lang="zh">修改机制</span><span data-lang="hant">修改機制</span></p>
+      <p class="eyebrow reveal"><span data-lang="en">Revisions</span><span data-lang="zh">修改机制</span><span data-lang="hant">修改機制</span></p>
       <div class="grid grid--sidecar">
         <h2 class="h1 reveal">
           <span data-lang="en">Changes are welcome. They just follow clear rules.</span>
@@ -201,10 +199,9 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
   </section>
 
   <!-- ============ QUALITY ============ -->
-  <section class="section" data-surface="alt" id="quality">
+  <section class="section section--rule" id="quality">
     <div class="wrap">
-      <p class="eyebrow reveal"><span class="num">04</span>
-        <span data-lang="en">Quality checks</span><span data-lang="zh">交付检查</span><span data-lang="hant">交付檢查</span></p>
+      <p class="eyebrow reveal"><span data-lang="en">Quality checks</span><span data-lang="zh">交付检查</span><span data-lang="hant">交付檢查</span></p>
       <div class="grid grid--sidecar">
         <div>
           <h2 class="h1 reveal">
@@ -233,7 +230,7 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
     </div>
   </section>
 
-  <section class="section section--tight cta stripes" data-surface="dark">
+  <section class="section section--tight cta section--rule">
     <div class="wrap cta__in">
       <div>
         <div class="bar reveal"></div>

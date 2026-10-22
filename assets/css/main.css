@@ -543,6 +543,33 @@ html[data-lang="zh"] .hero2__title,html[data-lang="hant"] .hero2__title{ letter-
 @keyframes planIn{ from{ opacity:0; transform:translateY(4px); } to{ opacity:1; transform:none; } }
 @media (prefers-reduced-motion:reduce){ .plan__g{ opacity:1; animation:none; } }
 
+/* Inner-page header on paper, closed by a title-block strip ("sheet bar"):
+   every page reads as one sheet of the set — A-01 services, A-02 process … */
+.phero--paper{ background:var(--bg); color:var(--fg); padding-top:clamp(120px,13vw,172px); padding-bottom:0; }
+.phero--paper .h1,.phero--paper .display{ font-weight:600; }
+.sheetbar{ margin-top:clamp(40px,5vw,72px); display:grid; grid-template-columns:auto auto minmax(0,1fr) auto;
+  border:1px solid var(--line-strong); border-bottom:0; font-family:var(--font-mono); font-size:11px;
+  letter-spacing:.1em; color:var(--faint); }
+.sheetbar > span{ padding:10px 16px; border-right:1px solid var(--line-strong); white-space:nowrap; }
+.sheetbar > span:last-child{ border-right:0; }
+.sheetbar b{ color:var(--brand); font-weight:600; }
+.sheetbar__logo{ color:var(--graphite); font-weight:600; font-size:13px; letter-spacing:.02em; }
+@media (max-width:560px){ .sheetbar{ grid-template-columns:auto minmax(0,1fr); } .sheetbar > span:nth-child(n+3){ display:none; } .sheetbar > span:nth-child(2){ border-right:0; } }
+.phero--paper + .section{ border-top:1px solid var(--line-strong); }
+
+/* Sections on paper are divided by a hairline, never by a colour change. */
+main > .section + .section:not([data-surface]){ border-top:1px solid var(--line); }
+
+/* Cards become ruled entries: no box, no fill, a rule on top. The few real
+   "grids" (packages, stages, org chart, image tiles) keep their frames. */
+.card{ background:transparent; border:0; border-top:1px solid var(--line-strong);
+  padding:clamp(18px,2vw,24px) 0 0; min-height:0; }
+a.card:hover{ transform:none; border-top-color:var(--brand); }
+.card--ink{ background:transparent; border:0; border-top:2px solid var(--brand); color:var(--fg);
+  --fg:#1B1C1E; --muted:#55575B; --faint:#6B6D71; --line:#DCDAD5; --accent:#A8342B; }
+[data-surface="dark"] .card{ border-top-color:#4A4B4F; }
+.card__ix{ font-size:12px; }
+
 /* A section separated by a hairline instead of a colour band. */
 .section--rule{ border-top:1px solid var(--line); }
 .section--rule + .section--rule{ border-top:1px solid var(--line); }
