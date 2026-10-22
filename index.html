@@ -45,7 +45,7 @@
 (function(){try{var k={zh:"zh-CN",hant:"zh-Hant",en:"en"},q=new URLSearchParams(location.search).get("lang"),
 s=localStorage.getItem("aid-lang"),n=(navigator.language||"zh").toLowerCase(),
 l=k[q]?q:k[s]?s:/^zh-(tw|hk|mo|hant)/.test(n)?"hant":n.indexOf("en")===0?"en":"zh",d=document.documentElement;
-d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
+d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);d.classList.add("js");}catch(e){}})();
 </script>
 <link rel="preload" href="assets/fonts/plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/main.css">
@@ -75,7 +75,7 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
       </div>
 
       <figure class="sheet reveal" data-delay="100" aria-hidden="true">
-        <svg class="plan" viewBox="0 0 1000 720" role="presentation">
+        <svg class="plan plan--draw" viewBox="0 0 1000 720" role="presentation">
           <!-- axes -->
           <g class="plan__g plan__axes">
             <line class="dw-axis" x1="160" y1="70" x2="160" y2="640"/>
@@ -173,7 +173,7 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
           <span data-lang="zh">不是替换您的团队，<br>是多一支更大的力量</span><span data-lang="hant">不是替換您的團隊，<br>是多一支更大的力量</span>
         </h2>
       </div>
-      <p class="lede mt-m reveal" data-delay="80">
+      <p class="lede mt-m reveal" data-delay="80" data-scrub>
         <span data-lang="en">Working with AID doesn't mean cutting your people or shrinking your studio. Your team stays, doing what it does best: the scheme and the ideas. AID adds a digital delivery force beside it, backed by Tiangong Kaiwu's in-house platform and delivery system. And we don't leave when the job is done. We stay at your side for the long run.</span>
         <span data-lang="zh">和 AID 合作，不是裁掉自己的人、削弱自己的团队。您的团队还在，继续做最擅长的方案与创意；AID 是加在您身边的一支数字建造力量，背后是天宫开物的自研平台和整套交付体系。而且这支力量不是做完一单就走，而是长期在您左右。</span><span data-lang="hant">和 AID 合作，不是裁掉自己的人、削弱自己的團隊。您的團隊還在，繼續做最擅長的方案與創意；AID 是加在您身邊的一支數位建造力量，背後是天宮開物的自研平台和整套交付體系。而且這支力量不是做完一單就走，而是長期在您左右。</span>
       </p>
@@ -205,30 +205,120 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
         </p>
       </div>
 
-      <div class="roles mt-l reveal" role="table" aria-label="AID role by stage">
-        <div class="roles__head" role="row">
-          <span role="columnheader"><b>0.5</b><span data-lang="en">Scheme</span><span data-lang="zh">方案</span><span data-lang="hant">方案</span></span>
-          <span role="columnheader"><b>1.0</b><span data-lang="en">Design development</span><span data-lang="zh">扩初</span><span data-lang="hant">初步設計</span></span>
-          <span role="columnheader"><b>2.0</b><span data-lang="en">Construction drawings</span><span data-lang="zh">施工图</span><span data-lang="hant">施工圖</span></span>
-          <span role="columnheader"><b>2.x</b><span data-lang="en">On site</span><span data-lang="zh">施工配合</span><span data-lang="hant">施工配合</span></span>
+      <div class="story mt-l" data-story>
+        <div class="story__steps">
+        <div class="story__step" data-step="1">
+          <p class="story__v">0.5</p>
+          <p class="story__tag"><span class="tag"><span data-lang="en">Support · Scheme</span><span data-lang="zh">辅 · 方案阶段</span><span data-lang="hant">輔 · 方案階段</span></span></p>
+          <h3 class="story__t"><span data-lang="en">First, understand the space</span><span data-lang="zh">先把空间读懂</span><span data-lang="hant">先把空間讀懂</span></h3>
+          <p class="story__d"><span data-lang="en">We rebuild the existing space and work through the scheme with you until the baseline model is set. Everything after builds on it.</span><span data-lang="zh">还原现状，陪大师改方案，建立方案基准模型。后面的每一步，都从这一版往下深化。</span><span data-lang="hant">還原現狀，陪大師改方案，建立方案基準模型。後面的每一步，都從這一版往下深化。</span></p>
         </div>
-        <div class="roles__row" role="row">
-          <div class="roles__bar roles__bar--assist" style="grid-column:1 / 2" role="cell">
-            <b><span data-lang="en">Support · Scheme</span><span data-lang="zh">辅 · 方案辅助</span><span data-lang="hant">輔 · 方案輔助</span></b>
-            <span><span data-lang="en">We revise alongside you and build the baseline model.</span><span data-lang="zh">陪大师改方案，建立方案基准模型。</span><span data-lang="hant">陪大師改方案，建立方案基準模型。</span></span>
-          </div>
+        <div class="story__step" data-step="2">
+          <p class="story__v">1.0</p>
+          <p class="story__tag"><span class="tag tag--fill"><span data-lang="en">Lead · Design development</span><span data-lang="zh">主 · 扩初阶段</span><span data-lang="hant">主 · 初步設計階段</span></span></p>
+          <h3 class="story__t"><span data-lang="en">Turn the scheme into a layout</span><span data-lang="zh">把方案落成布局</span><span data-lang="hant">把方案落成佈局</span></h3>
+          <p class="story__d"><span data-lang="en">Plans, ceilings, elevations and material direction are fixed, with MEP principles and early cost alerts alongside.</span><span data-lang="zh">平面、天花、立面和主要材料方向定下来，机电点位原则和成本预警同步给到。</span><span data-lang="hant">平面、天花、立面和主要材料方向定下來，機電點位原則和成本預警同步給到。</span></p>
         </div>
-        <div class="roles__row" role="row">
-          <div class="roles__bar" style="grid-column:2 / 4" role="cell">
-            <b><span data-lang="en">Lead · Construction drawings</span><span data-lang="zh">主 · 施工图落地</span><span data-lang="hant">主 · 施工圖落地</span></b>
-            <span><span data-lang="en">Modeling, detailing and materials, with every drawing generated from the model.</span><span data-lang="zh">建模、深化、节点、物料，由模型生成施工图。</span><span data-lang="hant">建模、深化、節點、物料，由模型生成施工圖。</span></span>
-          </div>
+        <div class="story__step" data-step="3">
+          <p class="story__v">2.0</p>
+          <p class="story__tag"><span class="tag tag--fill"><span data-lang="en">Lead · Construction drawings</span><span data-lang="zh">主 · 施工图阶段</span><span data-lang="hant">主 · 施工圖階段</span></span></p>
+          <h3 class="story__t"><span data-lang="en">Drawings straight from the model</span><span data-lang="zh">从模型直接出图</span><span data-lang="hant">從模型直接出圖</span></h3>
+          <p class="story__d"><span data-lang="en">Details, dimensions and material codes all live in the model. Once they're confirmed, drawings follow within two working days.</span><span data-lang="zh">节点、尺寸、物料编码全部落在模型上。节点、收口、物料、点位确认后，2 个工作日出图。</span><span data-lang="hant">節點、尺寸、物料編碼全部落在模型上。節點、收邊、物料、點位確認後，2 個工作日出圖。</span></p>
         </div>
-        <div class="roles__row" role="row">
-          <div class="roles__bar" style="grid-column:4 / 5" role="cell">
-            <b><span data-lang="en">Lead · On site</span><span data-lang="zh">主 · 现场技术服务</span><span data-lang="hant">主 · 現場技術服務</span></b>
-            <span><span data-lang="en">Tender clarifications, briefings, inspections, design changes.</span><span data-lang="zh">招标答疑、技术交底、巡场驻场、设计变更。</span><span data-lang="hant">招標答疑、施工技術說明、工地巡視駐場、設計變更。</span></span>
-          </div>
+        <div class="story__step" data-step="4">
+          <p class="story__v">2.x</p>
+          <p class="story__tag"><span class="tag tag--fill"><span data-lang="en">Lead · On site</span><span data-lang="zh">主 · 施工配合</span><span data-lang="hant">主 · 施工配合</span></span></p>
+          <h3 class="story__t"><span data-lang="en">Changes, tracked to the end</span><span data-lang="zh">改到哪，跟到哪</span><span data-lang="hant">改到哪，跟到哪</span></h3>
+          <p class="story__d"><span data-lang="en">Changes during construction become versions 2.1, 2.2 of the same model, with four-party change orders and a full record.</span><span data-lang="zh">施工中要改，就在同一个模型上出 2.1、2.2 变更版本，变更单四方签字，全程留痕。</span><span data-lang="hant">施工中要改，就在同一個模型上出 2.1、2.2 變更版本，變更單四方簽字，全程留下紀錄。</span></p>
+        </div>
+        </div>
+        <div class="story__stage">
+          <figure class="sheet story__sheet" aria-hidden="true">
+          <svg class="plan plan--story" viewBox="0 0 1000 720" role="presentation" data-at="4">
+          <!-- axes -->
+          <g class="plan__g plan__axes">
+            <line class="dw-axis" x1="160" y1="70" x2="160" y2="640"/>
+            <line class="dw-axis" x1="600" y1="70" x2="600" y2="640"/>
+            <line class="dw-axis" x1="840" y1="70" x2="840" y2="640"/>
+            <line class="dw-axis" x1="80" y1="150" x2="900" y2="150"/>
+            <line class="dw-axis" x1="80" y1="590" x2="900" y2="590"/>
+            <circle class="dw-bub" cx="160" cy="52" r="15"/><text class="dw-t dw-t--c" x="160" y="56">1</text>
+            <circle class="dw-bub" cx="600" cy="52" r="15"/><text class="dw-t dw-t--c" x="600" y="56">2</text>
+            <circle class="dw-bub" cx="840" cy="52" r="15"/><text class="dw-t dw-t--c" x="840" y="56">3</text>
+            <circle class="dw-bub" cx="62" cy="150" r="15"/><text class="dw-t dw-t--c" x="62" y="154">A</text>
+            <circle class="dw-bub" cx="62" cy="590" r="15"/><text class="dw-t dw-t--c" x="62" y="594">B</text>
+          </g>
+          <!-- dimensions -->
+          <g class="plan__g plan__dims">
+            <line class="dw-thin" x1="160" y1="112" x2="840" y2="112"/>
+            <line class="dw-thin" x1="160" y1="104" x2="160" y2="128"/><line class="dw-thin" x1="600" y1="104" x2="600" y2="128"/><line class="dw-thin" x1="840" y1="104" x2="840" y2="128"/>
+            <line class="dw-tick" x1="154" y1="118" x2="166" y2="106"/><line class="dw-tick" x1="594" y1="118" x2="606" y2="106"/><line class="dw-tick" x1="834" y1="118" x2="846" y2="106"/>
+            <text class="dw-t dw-t--c" x="380" y="104">4400</text><text class="dw-t dw-t--c" x="720" y="104">2400</text>
+            <line class="dw-thin" x1="118" y1="150" x2="118" y2="590"/>
+            <line class="dw-thin" x1="110" y1="150" x2="134" y2="150"/><line class="dw-thin" x1="110" y1="590" x2="134" y2="590"/>
+            <line class="dw-tick" x1="112" y1="156" x2="124" y2="144"/><line class="dw-tick" x1="112" y1="596" x2="124" y2="584"/>
+            <text class="dw-t dw-t--c" x="104" y="374" transform="rotate(-90 104 370)">4400</text>
+          </g>
+          <!-- walls -->
+          <g class="plan__g plan__walls">
+            <rect class="dw-wall" x="152" y="142" width="78" height="16"/>
+            <rect class="dw-wall" x="430" y="142" width="170" height="16"/>
+            <rect class="dw-wall" x="780" y="142" width="68" height="16"/>
+            <rect class="dw-wall" x="152" y="582" width="448" height="16"/>
+            <rect class="dw-wall" x="690" y="582" width="158" height="16"/>
+            <rect class="dw-wall" x="152" y="142" width="16" height="456"/>
+            <rect class="dw-wall" x="832" y="142" width="16" height="456"/>
+            <rect class="dw-wall" x="595" y="158" width="10" height="227"/>
+            <rect class="dw-wall" x="605" y="375" width="35" height="10"/>
+            <rect class="dw-wall" x="700" y="375" width="132" height="10"/>
+            <!-- windows -->
+            <path class="dw-thin" d="M230 142H430M230 150H430M230 158H430M600 142H780M600 150H780M600 158H780"/>
+          </g>
+          <!-- doors + furniture -->
+          <g class="plan__g plan__furn">
+            <path class="dw-line" d="M600 582V492M690 582A90 90 0 0 0 600 492"/>
+            <path class="dw-line" d="M640 385V445M700 385A60 60 0 0 1 640 445"/>
+            <rect class="dw-line" x="168" y="250" width="200" height="180"/>
+            <rect class="dw-thin" x="178" y="262" width="40" height="72" rx="8"/>
+            <rect class="dw-thin" x="178" y="346" width="40" height="72" rx="8"/>
+            <line class="dw-thin" x1="300" y1="250" x2="300" y2="430"/>
+            <rect class="dw-thin" x="168" y="204" width="40" height="40"/>
+            <rect class="dw-thin" x="168" y="436" width="40" height="40"/>
+            <rect class="dw-line" x="250" y="520" width="230" height="56" rx="6"/>
+            <line class="dw-thin" x1="262" y1="532" x2="468" y2="532"/>
+            <circle class="dw-line" cx="365" cy="478" r="30"/>
+            <rect class="dw-thin" x="553" y="168" width="40" height="160"/>
+            <path class="dw-thin dw-dash" d="M553 168L593 328M593 168L553 328"/>
+            <rect class="dw-line" x="770" y="430" width="60" height="130"/>
+            <circle class="dw-thin" cx="744" cy="495" r="18"/>
+            <rect class="dw-line" x="700" y="166" width="124" height="74" rx="18"/>
+            <rect class="dw-thin" x="712" y="176" width="100" height="54" rx="14"/>
+            <rect class="dw-line" x="612" y="166" width="62" height="42"/>
+            <ellipse class="dw-thin" cx="643" cy="187" rx="20" ry="12"/>
+            <rect class="dw-thin" x="626" y="282" width="34" height="12"/>
+            <ellipse class="dw-line" cx="643" cy="318" rx="16" ry="22"/>
+          </g>
+          <!-- revision: cloud + detail callout -->
+          <g class="plan__g plan__red">
+            <path class="dw-red" d="M806 352a13 13 0 0 1 22-6a13 13 0 0 1 24 4a13 13 0 0 1 8 22a13 13 0 0 1-6 23a13 13 0 0 1-23 6a13 13 0 0 1-24-4a13 13 0 0 1-8-22a13 13 0 0 1 7-23z"/>
+            <line class="dw-red" x1="866" y1="362" x2="914" y2="300"/>
+            <circle class="dw-red" cx="932" cy="282" r="24"/>
+            <line class="dw-red" x1="908" y1="282" x2="956" y2="282"/>
+            <text class="dw-t dw-t--c dw-t--red" x="932" y="276">03</text>
+            <text class="dw-t dw-t--c dw-t--red dw-t--s" x="932" y="296">A-301</text>
+            <path class="dw-plus" d="M916 360h8v8h8v8h-8v8h-8v-8h-8v-8h8z"/>
+          </g>
+          <!-- title block -->
+          <g class="plan__g plan__tb">
+            <rect class="dw-thin" x="560" y="640" width="400" height="56"/>
+            <line class="dw-thin" x1="700" y1="640" x2="700" y2="696"/>
+            <line class="dw-thin" x1="820" y1="640" x2="820" y2="696"/>
+            <text class="dw-t dw-t--b" x="574" y="674">AID+</text>
+            <text class="dw-t dw-t--s" x="714" y="660">SHEET</text><text class="dw-t" x="714" y="684">A-00</text>
+            <text class="dw-t dw-t--s" x="834" y="660">VERSION</text><text class="dw-t dw-t--red" x="834" y="684" data-ver>2.x</text>
+          </g>
+        </svg>
+          </figure>
         </div>
       </div>
       <p class="mt-m reveal"><a class="link" href="process.html"><span data-lang="en">See the four stages in detail</span><span data-lang="zh">查看四个阶段的详细工作流</span><span data-lang="hant">查看四個階段的詳細工作流</span> →</a></p>

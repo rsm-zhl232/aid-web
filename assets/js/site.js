@@ -599,6 +599,149 @@ function initContactForm() {
   });
 }
 
+/* ---- Motion ------------------------------------------------------------- */
+var REDUCE = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* Hero drawing, drafted in order: grid, walls, fittings, dimensions, title
+   block, then the red revision. Stroked lines are drawn with the
+   dash-offset trick; fills, dashed lines and text fade in instead (a dash
+   pattern can't be both drawn and kept). */
+function initDraw() {
+  var svg = document.querySelector(".plan--draw");
+  if (!svg) return;
+  var order = [[".plan__axes", 0], [".plan__walls", 0.5], [".plan__furn", 0.8],
+               [".plan__dims", 1.5], [".plan__tb", 1.7], [".plan__red", 2.1]];
+  var todo = [];
+  order.forEach(function (o) {
+    var g = svg.querySelector(o[0]);
+    if (!g) return;
+    if (!REDUCE) {
+      g.querySelectorAll("line,path,rect,circle,ellipse,polygon,text").forEach(function (el, i) {
+        var cs = getComputedStyle(el);
+        var stroked = el.tagName !== "text" && cs.stroke !== "none" && cs.strokeDasharray === "none" && el.getTotalLength;
+        if (stroked) {
+          var L = el.getTotalLength();
+          el.style.strokeDasharray = L;
+          el.style.strokeDashoffset = L;
+          el.style.transition = "stroke-dashoffset 1.1s cubic-bezier(.65,0,.35,1) " + (o[1] + (i % 7) * 0.04) + "s";
+          todo.push(function () { el.style.strokeDashoffset = 0; });
+        } else {
+          el.style.opacity = 0;
+          el.style.transition = "opacity .6s ease " + (o[1] + 0.35) + "s";
+          todo.push(function () { el.style.opacity = ""; });
+        }
+      });
+    }
+    g.style.opacity = 1;
+  });
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () { todo.forEach(function (f) { f(); }); });
+  });
+}
+
+/* Scroll story: whichever step crosses the middle of the screen sets the
+   drawing's stage (data-at) and the version in its title block. Measured on
+   scroll rather than with IntersectionObserver, whose callbacks can lag. */
+function initStory() {
+  var story = document.querySelector("[data-story]");
+  if (!story) return;
+  var svg = story.querySelector(".plan--story");
+  var steps = Array.prototype.slice.call(story.querySelectorAll("[data-step]"));
+  var ver = svg && svg.querySelector("[data-ver]");
+  var vers = ["0.5", "1.0", "2.0", "2.x"];
+  var at = 0;
+  function set(n) {
+    if (n === at) return;
+    at = n;
+    if (svg) svg.setAttribute("data-at", n);
+    steps.forEach(function (s) { s.classList.toggle("is-active", Number(s.dataset.step) === n); });
+    if (ver) ver.textContent = vers[n - 1];
+  }
+  function update() {
+    var mid = window.innerHeight / 2, best = 1, bestDist = Infinity;
+    steps.forEach(function (s) {
+      var r = s.getBoundingClientRect();
+      var d = r.top <= mid && r.bottom >= mid ? 0 : Math.min(Math.abs(r.top - mid), Math.abs(r.bottom - mid));
+      if (d < bestDist) { bestDist = d; best = Number(s.dataset.step); }
+    });
+    set(best);
+  }
+  onScrollFrame(update);
+}
+
+/* Run fn now and on every scroll / resize, at most once per frame. */
+function onScrollFrame(fn) {
+  var ticking = false;
+  function tick() { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; fn(); }); } }
+  window.addEventListener("scroll", tick, { passive: true });
+  window.addEventListener("resize", tick);
+  fn();
+}
+
+/* Words (English) or characters (Chinese) light up as the paragraph moves
+   up the screen. */
+function initScrub() {
+  var els = document.querySelectorAll("[data-scrub]");
+  if (!els.length || REDUCE) return;
+  els.forEach(function (el) {
+    el.querySelectorAll("[data-lang]").forEach(function (sp) {
+      var text = sp.textContent;
+      var parts = sp.dataset.lang === "en" ? text.split(/(\s+)/) : Array.from(text);
+      sp.innerHTML = parts.map(function (p) {
+        return /^\s*$/.test(p) ? p : '<span class="w">' + AID.esc(p) + "</span>";
+      }).join("");
+    });
+    el.classList.add("is-scrub");
+  });
+  function update() {
+    var vh = window.innerHeight;
+    els.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      var start = vh * 0.88, end = vh * 0.3;
+      var p = (start - r.top) / (start - end + r.height * 0.5);
+      p = Math.max(0, Math.min(1, p));
+      el.querySelectorAll("[data-lang]").forEach(function (sp) {
+        var ws = sp.querySelectorAll(".w"), n = Math.round(p * ws.length);
+        for (var i = 0; i < ws.length; i++) ws[i].classList.toggle("on", i < n);
+      });
+    });
+  }
+  onScrollFrame(update);
+}
+
+/* Glass sub-nav on inner pages: page name on the left, the next step on the
+   right. Appears once the page title has scrolled under the header. */
+var SUBNAV = {
+  "services.html": { en: "Services", zh: "服务", hant: "服務", sheet: "A-01" },
+  "process.html": { en: "How we work", zh: "工作流程", hant: "工作流程", sheet: "A-02" },
+  "technology.html": { en: "Technology & team", zh: "技术与团队", hant: "技術與團隊", sheet: "A-03" },
+  "about.html": { en: "About AID", zh: "关于 AID", hant: "關於 AID", sheet: "A-04" },
+  "faq.html": { en: "FAQ", zh: "常见问题", hant: "常見問題", sheet: "A-05" },
+  "trial.html": { en: "Trial on one space", zh: "试做一个空间", hant: "試做一個空間", sheet: "A-06" },
+  "contact.html": { en: "Contact", zh: "联系我们", hant: "聯絡我們", sheet: "A-07" },
+  "privacy.html": { en: "Privacy", zh: "隐私说明", hant: "隱私說明", sheet: "A-08" },
+};
+function renderSubnav() {
+  var hero = document.querySelector(".phero");
+  var page = SUBNAV[currentPage()];
+  if (!hero || !page) return;
+  var here = currentPage(), cta = "";
+  if (here === "trial.html")
+    cta = '<a class="btn btn--primary" href="contact.html?topic=trial">' +
+      AID.bi({ en: "Book a trial", zh: "预约试做", hant: "預約試做" }) + "</a>";
+  else if (here !== "contact.html")
+    cta = '<a class="btn btn--primary" href="trial.html">' +
+      AID.bi({ en: "Start with a trial space", zh: "先试做一个空间", hant: "先試做一個空間" }) + "</a>";
+  var bar = document.createElement("div");
+  bar.className = "subnav";
+  bar.innerHTML = '<div class="wrap subnav__in"><span class="subnav__t">' + AID.bi(page) +
+    "<small>SHEET " + page.sheet + "</small></span>" + cta + "</div>";
+  document.body.appendChild(bar);
+  onScrollFrame(function () {
+    bar.classList.toggle("is-on", hero.getBoundingClientRect().bottom < 120);
+  });
+}
+
 /* ---- Boot --------------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", function () {
   renderHeader();
@@ -609,6 +752,10 @@ document.addEventListener("DOMContentLoaded", function () {
   renderTeam();
   renderBrochure();
   initAnalytics();
+  renderSubnav();
+  initDraw();
+  initStory();
+  initScrub();
   initContactForm();
   initReveal();
 });

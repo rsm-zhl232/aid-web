@@ -30,7 +30,7 @@
 (function(){try{var k={zh:"zh-CN",hant:"zh-Hant",en:"en"},q=new URLSearchParams(location.search).get("lang"),
 s=localStorage.getItem("aid-lang"),n=(navigator.language||"zh").toLowerCase(),
 l=k[q]?q:k[s]?s:/^zh-(tw|hk|mo|hant)/.test(n)?"hant":n.indexOf("en")===0?"en":"zh",d=document.documentElement;
-d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
+d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);d.classList.add("js");}catch(e){}})();
 </script>
 <link rel="preload" href="assets/fonts/plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/main.css">

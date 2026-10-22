@@ -640,6 +640,70 @@ html[data-lang="zh"] .creed,html[data-lang="hant"] .creed{ letter-spacing:.06em;
 /* Cards that no longer open with an index: the title leads. */
 .card > .card__t--top:first-child{ margin-top:0; }
 
+/* ==========================================================================
+   MOTION — restrained, scroll-led, Apple-like. Everything here switches off
+   for visitors who ask their system for reduced motion.
+   ========================================================================== */
+
+/* Page-to-page crossfade (cross-document View Transitions; browsers without
+   support just navigate normally). The header keeps still between pages. */
+@view-transition{ navigation:auto; }
+::view-transition-old(root),::view-transition-new(root){ animation-duration:.38s; animation-timing-function:cubic-bezier(.22,.61,.36,1); }
+header[data-hdr]{ view-transition-name:site-header; }
+@media (prefers-reduced-motion:reduce){ @view-transition{ navigation:none; } }
+
+/* Hero drawing drawn line by line (site.js initDraw). Hidden until the
+   script takes over, so it never flashes complete first. */
+.plan--draw .plan__g{ animation:none; opacity:1; }
+.js .plan--draw .plan__g{ opacity:0; }
+@media (prefers-reduced-motion:reduce){ .js .plan--draw .plan__g{ opacity:1; } }
+
+/* Scroll story: the sheet stays put while four steps scroll past, and the
+   drawing gains a layer per stage (site.js initStory). */
+.story{ display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:clamp(32px,5vw,80px); }
+.story__step{ min-height:72vh; display:flex; flex-direction:column; justify-content:center;
+  opacity:.25; transition:opacity .45s var(--ease); }
+.story__step:first-child{ min-height:56vh; justify-content:flex-start; padding-top:8vh; }
+.story__step:last-child{ min-height:64vh; }
+.story__step.is-active{ opacity:1; }
+.story__v{ font-family:var(--font-mono); font-size:clamp(44px,5.4vw,76px); font-weight:500; line-height:1; color:var(--fg); }
+.story__tag{ margin-top:18px; }
+.story__t{ margin-top:16px; font-size:clamp(22px,2.2vw,30px); font-weight:600; line-height:1.3; }
+.story__d{ margin-top:12px; font-size:16px; line-height:1.8; color:var(--muted); max-width:30em; }
+.story__stage{ position:relative; }
+.story__sheet{ position:sticky; top:calc(68px + clamp(32px,8vh,96px)); }
+.plan--story .plan__g{ animation:none; opacity:1; transition:opacity .6s var(--ease), transform .6s var(--ease); }
+.plan--story[data-at="1"] :is(.plan__furn,.plan__dims,.plan__tb,.plan__red),
+.plan--story[data-at="2"] :is(.plan__dims,.plan__tb,.plan__red),
+.plan--story[data-at="3"] .plan__red{ opacity:0; transform:translateY(6px); }
+@media (max-width:960px){
+  .story{ grid-template-columns:1fr; gap:0; }
+  .story__stage{ order:-1; position:sticky; top:68px; z-index:2; background:var(--bg); padding-block:10px; }
+  .story__sheet{ position:static; max-width:520px; }
+  .story__step,.story__step:first-child,.story__step:last-child{ min-height:58vh; padding-top:0; justify-content:center; }
+}
+@media (prefers-reduced-motion:reduce){ .story__step{ opacity:1; } .plan--story .plan__g{ transition:none; } }
+
+/* Words light up as the paragraph scrolls through (site.js initScrub). */
+.is-scrub{ color:var(--fg); }
+.is-scrub .w{ opacity:.2; transition:opacity .3s var(--ease); }
+.is-scrub .w.on{ opacity:1; }
+
+/* Glass sub-nav on inner pages: slides out from under the header once the
+   page title has scrolled away (site.js renderSubnav). */
+.subnav{ position:fixed; top:68px; left:0; right:0; z-index:99;
+  background:rgba(242,241,237,.55); backdrop-filter:blur(26px) saturate(190%); -webkit-backdrop-filter:blur(26px) saturate(190%);
+  border-bottom:1px solid rgba(27,28,30,.10); box-shadow:0 10px 30px rgba(27,28,30,.06);
+  transform:translateY(-100%); opacity:0; pointer-events:none; transition:transform .4s var(--ease), opacity .3s var(--ease); }
+.subnav.is-on{ transform:none; opacity:1; pointer-events:auto; }
+.subnav__in{ display:flex; align-items:center; justify-content:space-between; gap:16px; height:52px; }
+.subnav__t{ font-size:15px; font-weight:600; color:var(--fg); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.subnav__t small{ font-family:var(--font-mono); font-size:11px; font-weight:400; letter-spacing:.1em; color:var(--faint); margin-left:12px; }
+.subnav .btn{ padding:8px 16px; font-size:13px; }
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){ .subnav{ background:rgba(242,241,237,.96); } }
+/* In-page anchors land below the header and the sub-nav. */
+section[id]{ scroll-margin-top:132px; }
+
 /* ---- 18. CTA band ------------------------------------------------------- */
 .cta{ position:relative; overflow:hidden; }
 .cta__in{ position:relative; z-index:1; display:flex; flex-wrap:wrap; gap:32px;
