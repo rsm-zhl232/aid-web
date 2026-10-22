@@ -104,8 +104,13 @@ html[data-lang="zh"] [data-lang="hant"],
 html[data-lang="hant"] [data-lang="en"],
 html[data-lang="hant"] [data-lang="zh"]{ display:none !important; }
 /* Traditional text set in the TC cut, so characters take Hong Kong / Taiwan forms. */
+/* Windows: Microsoft YaHei comes before JhengHei on purpose. YaHei covers every
+   Traditional character, and JhengHei's strokes (bold included) are visibly
+   thinner, so switching 简 → 繁 made the whole page look lighter. Apple and
+   Android use the TC cut of the same family (PingFang / Noto), so no change. */
 html[data-lang="hant"]{ --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
-  "Microsoft JhengHei", "Noto Sans TC", "Noto Sans CJK TC", "Source Han Sans TC", "Helvetica Neue", Arial, sans-serif; }
+  "Microsoft YaHei", "Microsoft JhengHei", "Noto Sans TC", "Noto Sans CJK TC", "Source Han Sans TC",
+  "Helvetica Neue", Arial, sans-serif; }
 
 /* ---- 4. Layout ---------------------------------------------------------- */
 .wrap{ width:100%; max-width:var(--wrap); margin-inline:auto; padding-inline:var(--gutter); }
