@@ -669,10 +669,19 @@ function initStory() {
   onScrollFrame(update);
 }
 
-/* Run fn now and on every scroll / resize, at most once per frame. */
+/* Run fn now and on every scroll / resize, at most once per frame. A short
+   timer backs up requestAnimationFrame: if the browser holds frames back
+   (background tab, heavy load), the state still catches up. */
 function onScrollFrame(fn) {
   var ticking = false;
-  function tick() { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; fn(); }); } }
+  function tick() {
+    if (ticking) return;
+    ticking = true;
+    var done = false;
+    function run() { if (done) return; done = true; ticking = false; fn(); }
+    requestAnimationFrame(run);
+    setTimeout(run, 120);
+  }
   window.addEventListener("scroll", tick, { passive: true });
   window.addEventListener("resize", tick);
   fn();
@@ -721,24 +730,61 @@ var SUBNAV = {
   "contact.html": { en: "Contact", zh: "联系我们", hant: "聯絡我們", sheet: "A-07" },
   "privacy.html": { en: "Privacy", zh: "隐私说明", hant: "隱私說明", sheet: "A-08" },
 };
+/* Home page: the sub-nav is a table of contents for the page, with the
+   section currently being read highlighted. Entries whose section is
+   missing or hidden (e.g. partners with PARTNER_SLOTS = 0) are left out. */
+var HOME_TOC = [
+  { id: "plus", en: "More, not less", zh: "加法", hant: "加法" },
+  { id: "model", en: "One model", zh: "一个模型", hant: "一個模型" },
+  { id: "promises", en: "Commitments", zh: "八项承诺", hant: "八項承諾" },
+  { id: "partners", en: "Partners", zh: "合作大师", hant: "合作大師" },
+];
+
 function renderSubnav() {
-  var hero = document.querySelector(".phero");
-  var page = SUBNAV[currentPage()];
+  var here = currentPage();
+  var home = here === "index.html";
+  var hero = document.querySelector(home ? ".hero2" : ".phero");
+  var page = home ? { en: "AID", zh: "艾匠科技", hant: "艾匠科技", sheet: "A-00" } : SUBNAV[here];
   if (!hero || !page) return;
-  var here = currentPage(), cta = "";
+
+  var cta = "";
   if (here === "trial.html")
     cta = '<a class="btn btn--primary" href="contact.html?topic=trial">' +
       AID.bi({ en: "Book a trial", zh: "预约试做", hant: "預約試做" }) + "</a>";
   else if (here !== "contact.html")
     cta = '<a class="btn btn--primary" href="trial.html">' +
       AID.bi({ en: "Start with a trial space", zh: "先试做一个空间", hant: "先試做一個空間" }) + "</a>";
+
+  var toc = [];
+  if (home) {
+    toc = HOME_TOC.map(function (t) { return { t: t, el: document.getElementById(t.id) }; })
+      .filter(function (x) { return x.el && !x.el.hidden; });
+  }
+  var links = toc.length
+    ? '<nav class="subnav__toc" aria-label="On this page">' + toc.map(function (x) {
+        return '<a href="#' + x.t.id + '">' + AID.bi(x.t) + "</a>";
+      }).join("") + "</nav>"
+    : "";
+
   var bar = document.createElement("div");
   bar.className = "subnav";
   bar.innerHTML = '<div class="wrap subnav__in"><span class="subnav__t">' + AID.bi(page) +
-    "<small>SHEET " + page.sheet + "</small></span>" + cta + "</div>";
+    "<small>SHEET " + page.sheet + "</small></span>" + links + cta + "</div>";
   document.body.appendChild(bar);
+  var anchors = bar.querySelectorAll(".subnav__toc a");
+
   onScrollFrame(function () {
-    bar.classList.toggle("is-on", hero.getBoundingClientRect().bottom < 120);
+    var on = hero.getBoundingClientRect().bottom < 120;
+    bar.classList.toggle("is-on", on);
+    /* lets sticky elements (the home scroll story) move down out of its way */
+    document.body.classList.toggle("subnav-on", on);
+    if (!anchors.length) return;
+    var cur = -1;
+    toc.forEach(function (x, i) { if (x.el.getBoundingClientRect().top <= 150) cur = i; });
+    anchors.forEach(function (a, i) {
+      if (i === cur) a.setAttribute("aria-current", "true");
+      else a.removeAttribute("aria-current");
+    });
   });
 }
 

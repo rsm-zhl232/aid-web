@@ -701,6 +701,23 @@ header[data-hdr]{ view-transition-name:site-header; }
 .subnav__t small{ font-family:var(--font-mono); font-size:11px; font-weight:400; letter-spacing:.1em; color:var(--faint); margin-left:12px; }
 .subnav .btn{ padding:8px 16px; font-size:13px; }
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){ .subnav{ background:rgba(242,241,237,.96); } }
+/* Home: the sub-nav carries a table of contents; the section being read is
+   underlined in brick red. Hidden on narrow screens, where only the name
+   and the button fit. */
+.subnav__toc{ display:flex; align-items:center; gap:2px; margin-left:auto; margin-right:clamp(12px,2vw,28px); }
+.subnav__toc a{ position:relative; padding:6px 12px; font-size:14px; color:var(--muted); white-space:nowrap;
+  transition:color .2s var(--ease); }
+.subnav__toc a:hover{ color:var(--fg); }
+.subnav__toc a[aria-current="true"]{ color:var(--fg); }
+.subnav__toc a[aria-current="true"]::after{ content:""; position:absolute; left:12px; right:12px; bottom:-1px;
+  height:2px; background:var(--brand); }
+@media (max-width:760px){ .subnav__toc{ display:none; } }
+
+/* While the sub-nav is out, sticky things sit below it, not under it. */
+.subnav-on .story__sheet{ top:calc(120px + clamp(24px,6vh,72px)); }
+@media (max-width:960px){ .subnav-on .story__stage{ top:120px; } }
+.story__sheet,.story__stage{ transition:top .4s var(--ease); }
+
 /* In-page anchors land below the header and the sub-nav. */
 section[id]{ scroll-margin-top:132px; }
 
