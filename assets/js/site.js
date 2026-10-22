@@ -647,15 +647,23 @@ function initStory() {
   if (!story) return;
   var svg = story.querySelector(".plan--story");
   var steps = Array.prototype.slice.call(story.querySelectorAll("[data-step]"));
+  var caps = story.querySelectorAll("[data-cap]");
   var ver = svg && svg.querySelector("[data-ver]");
-  var vers = ["0.5", "1.0", "2.0", "2.x"];
+  var big = svg && svg.querySelector("[data-stage]");
+  var stageNames = ["0.5", "1.0", "2.0", "2.x"];
+  var versions = ["0.5", "1.0", "2.0", "2.1"];
+  var layers = { 1: ".s1z", 2: ".s2", 3: ".s3", 4: ".s4" };
   var at = 0;
   function set(n) {
     if (n === at) return;
+    var first = at === 0;
     at = n;
     if (svg) svg.setAttribute("data-at", n);
     steps.forEach(function (s) { s.classList.toggle("is-active", Number(s.dataset.step) === n); });
-    if (ver) ver.textContent = vers[n - 1];
+    caps.forEach(function (c) { c.classList.toggle("is-active", Number(c.dataset.cap) === n); });
+    if (ver) ver.textContent = versions[n - 1];
+    if (big) big.textContent = stageNames[n - 1];
+    if (!first && svg) drawOn(svg.querySelector(layers[n]));
   }
   function update() {
     var mid = window.innerHeight / 2, best = 1, bestDist = Infinity;
@@ -667,6 +675,34 @@ function initStory() {
     set(best);
   }
   onScrollFrame(update);
+}
+
+/* Draw a layer on: solid strokes trace themselves, everything else
+   (fills, dashed lines, text) fades in a beat later. */
+function drawOn(g) {
+  if (!g || REDUCE) return;
+  var els = g.querySelectorAll("line,path,rect,circle,ellipse,polygon,text");
+  els.forEach(function (el, i) {
+    var cs = getComputedStyle(el);
+    var stroked = el.tagName !== "text" && cs.stroke !== "none" && cs.strokeDasharray === "none" && el.getTotalLength;
+    el.style.transition = "none";
+    if (stroked) {
+      var L = el.getTotalLength();
+      el.style.strokeDasharray = L;
+      el.style.strokeDashoffset = L;
+    } else {
+      el.style.opacity = 0;
+    }
+    el.getBoundingClientRect();
+    var delay = Math.min(i * 0.012, 0.5);
+    if (stroked) {
+      el.style.transition = "stroke-dashoffset .9s cubic-bezier(.65,0,.35,1) " + delay + "s";
+      el.style.strokeDashoffset = 0;
+    } else {
+      el.style.transition = "opacity .5s ease " + (delay + 0.3) + "s";
+      el.style.opacity = "";
+    }
+  });
 }
 
 /* Run fn now and on every scroll / resize, at most once per frame. A short

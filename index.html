@@ -217,7 +217,7 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);d.classList.add("js");
           <p class="story__v">1.0</p>
           <p class="story__tag"><span class="tag tag--fill"><span data-lang="en">Lead · Design development</span><span data-lang="zh">主 · 扩初阶段</span><span data-lang="hant">主 · 初步設計階段</span></span></p>
           <h3 class="story__t"><span data-lang="en">Turn the scheme into a layout</span><span data-lang="zh">把方案落成布局</span><span data-lang="hant">把方案落成佈局</span></h3>
-          <p class="story__d"><span data-lang="en">Plans, ceilings, elevations and material direction are fixed, with MEP principles and early cost alerts alongside.</span><span data-lang="zh">平面、天花、立面和主要材料方向定下来，机电点位原则和成本预警同步给到。</span><span data-lang="hant">平面、天花、立面和主要材料方向定下來，機電點位原則和成本預警同步給到。</span></p>
+          <p class="story__d"><span data-lang="en">The layout, ceiling lighting and main material direction are fixed, with elevations, MEP principles and early cost alerts alongside.</span><span data-lang="zh">平面布置、天花灯位和主要材料方向定下来；立面、机电点位原则和成本预警同步给到。</span><span data-lang="hant">平面佈置、天花燈位和主要材料方向定下來；立面、機電點位原則和成本預警同步給到。</span></p>
         </div>
         <div class="story__step" data-step="3">
           <p class="story__v">2.0</p>
@@ -233,10 +233,10 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);d.classList.add("js");
         </div>
         </div>
         <div class="story__stage">
+          <div class="story__pin">
           <figure class="sheet story__sheet" aria-hidden="true">
-          <svg class="plan plan--story" viewBox="0 0 1000 720" role="presentation" data-at="4">
-          <!-- axes -->
-          <g class="plan__g plan__axes">
+          <svg class="plan plan--story" viewBox="0 0 1000 720" role="presentation">
+          <g class="sx s1">
             <line class="dw-axis" x1="160" y1="70" x2="160" y2="640"/>
             <line class="dw-axis" x1="600" y1="70" x2="600" y2="640"/>
             <line class="dw-axis" x1="840" y1="70" x2="840" y2="640"/>
@@ -247,20 +247,7 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);d.classList.add("js");
             <circle class="dw-bub" cx="840" cy="52" r="15"/><text class="dw-t dw-t--c" x="840" y="56">3</text>
             <circle class="dw-bub" cx="62" cy="150" r="15"/><text class="dw-t dw-t--c" x="62" y="154">A</text>
             <circle class="dw-bub" cx="62" cy="590" r="15"/><text class="dw-t dw-t--c" x="62" y="594">B</text>
-          </g>
-          <!-- dimensions -->
-          <g class="plan__g plan__dims">
-            <line class="dw-thin" x1="160" y1="112" x2="840" y2="112"/>
-            <line class="dw-thin" x1="160" y1="104" x2="160" y2="128"/><line class="dw-thin" x1="600" y1="104" x2="600" y2="128"/><line class="dw-thin" x1="840" y1="104" x2="840" y2="128"/>
-            <line class="dw-tick" x1="154" y1="118" x2="166" y2="106"/><line class="dw-tick" x1="594" y1="118" x2="606" y2="106"/><line class="dw-tick" x1="834" y1="118" x2="846" y2="106"/>
-            <text class="dw-t dw-t--c" x="380" y="104">4400</text><text class="dw-t dw-t--c" x="720" y="104">2400</text>
-            <line class="dw-thin" x1="118" y1="150" x2="118" y2="590"/>
-            <line class="dw-thin" x1="110" y1="150" x2="134" y2="150"/><line class="dw-thin" x1="110" y1="590" x2="134" y2="590"/>
-            <line class="dw-tick" x1="112" y1="156" x2="124" y2="144"/><line class="dw-tick" x1="112" y1="596" x2="124" y2="584"/>
-            <text class="dw-t dw-t--c" x="104" y="374" transform="rotate(-90 104 370)">4400</text>
-          </g>
-          <!-- walls -->
-          <g class="plan__g plan__walls">
+          
             <rect class="dw-wall" x="152" y="142" width="78" height="16"/>
             <rect class="dw-wall" x="430" y="142" width="170" height="16"/>
             <rect class="dw-wall" x="780" y="142" width="68" height="16"/>
@@ -273,11 +260,11 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);d.classList.add("js");
             <rect class="dw-wall" x="700" y="375" width="132" height="10"/>
             <!-- windows -->
             <path class="dw-thin" d="M230 142H430M230 150H430M230 158H430M600 142H780M600 150H780M600 158H780"/>
-          </g>
-          <!-- doors + furniture -->
-          <g class="plan__g plan__furn">
-            <path class="dw-line" d="M600 582V492M690 582A90 90 0 0 0 600 492"/>
-            <path class="dw-line" d="M640 385V445M700 385A60 60 0 0 1 640 445"/>
+          <path class="dw-line" d="M600 582V492M690 582A90 90 0 0 0 600 492"/><path class="dw-line" d="M640 385V445M700 385A60 60 0 0 1 640 445"/></g>
+          <g class="sx s1z"><rect class="dw-zone" x="178" y="168" width="407" height="404"/><rect class="dw-zone" x="615" y="168" width="207" height="197"/><rect class="dw-zone" x="615" y="395" width="207" height="177"/><text class="dw-zt" x="381" y="378" data-lang="zh">卧室</text><text class="dw-zt" x="381" y="378" data-lang="hant">臥室</text><text class="dw-zt" x="381" y="378" data-lang="en">BEDROOM</text><text class="dw-zt" x="718" y="274" data-lang="zh">卫生间</text><text class="dw-zt" x="718" y="274" data-lang="hant">衛浴</text><text class="dw-zt" x="718" y="274" data-lang="en">BATH</text><text class="dw-zt" x="718" y="492" data-lang="zh">工作区</text><text class="dw-zt" x="718" y="492" data-lang="hant">工作區</text><text class="dw-zt" x="718" y="492" data-lang="en">STUDY</text></g>
+          <g class="sx s2"><path class="dw-mat" d="M172 172H590M172 188H590M172 204H590M172 220H590M172 236H590M172 252H590M172 268H590M172 284H590M172 300H590M172 316H590M172 332H590M172 348H590M172 364H590M172 380H590M172 396H590M172 412H590M172 428H590M172 444H590M172 460H590M172 476H590M172 492H590M172 508H590M172 524H590M172 540H590M172 556H590M172 572H590"/><path class="dw-mat" d="M631 162V371M655 162V371M679 162V371M703 162V371M727 162V371M751 162V371M775 162V371M799 162V371M823 162V371M609 184H828M609 208H828M609 232H828M609 256H828M609 280H828M609 304H828M609 328H828M609 352H828"/><rect class="dw-thin dw-dash" x="196" y="186" width="370" height="370"/><circle class="dw-line" cx="236" cy="226" r="8"/><path class="dw-thin" d="M224 226H248M236 214V238"/><circle class="dw-line" cx="526" cy="226" r="8"/><path class="dw-thin" d="M514 226H538M526 214V238"/><circle class="dw-line" cx="236" cy="516" r="8"/><path class="dw-thin" d="M224 516H248M236 504V528"/><circle class="dw-line" cx="526" cy="516" r="8"/><path class="dw-thin" d="M514 516H538M526 504V528"/><circle class="dw-line" cx="381" cy="371" r="8"/><path class="dw-thin" d="M369 371H393M381 359V383"/><circle class="dw-line" cx="668" cy="300" r="8"/><path class="dw-thin" d="M656 300H680M668 288V312"/><circle class="dw-line" cx="778" cy="300" r="8"/><path class="dw-thin" d="M766 300H790M778 288V312"/><circle class="dw-line" cx="718" cy="450" r="8"/><path class="dw-thin" d="M706 450H730M718 438V462"/><circle class="dw-line" cx="718" cy="540" r="8"/><path class="dw-thin" d="M706 540H730M718 528V552"/>
+            
+            
             <rect class="dw-line" x="168" y="250" width="200" height="180"/>
             <rect class="dw-thin" x="178" y="262" width="40" height="72" rx="8"/>
             <rect class="dw-thin" x="178" y="346" width="40" height="72" rx="8"/>
@@ -298,18 +285,16 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);d.classList.add("js");
             <rect class="dw-thin" x="626" y="282" width="34" height="12"/>
             <ellipse class="dw-line" cx="643" cy="318" rx="16" ry="22"/>
           </g>
-          <!-- revision: cloud + detail callout -->
-          <g class="plan__g plan__red">
-            <path class="dw-red" d="M806 352a13 13 0 0 1 22-6a13 13 0 0 1 24 4a13 13 0 0 1 8 22a13 13 0 0 1-6 23a13 13 0 0 1-23 6a13 13 0 0 1-24-4a13 13 0 0 1-8-22a13 13 0 0 1 7-23z"/>
-            <line class="dw-red" x1="866" y1="362" x2="914" y2="300"/>
-            <circle class="dw-red" cx="932" cy="282" r="24"/>
-            <line class="dw-red" x1="908" y1="282" x2="956" y2="282"/>
-            <text class="dw-t dw-t--c dw-t--red" x="932" y="276">03</text>
-            <text class="dw-t dw-t--c dw-t--red dw-t--s" x="932" y="296">A-301</text>
-            <path class="dw-plus" d="M916 360h8v8h8v8h-8v8h-8v-8h-8v-8h8z"/>
-          </g>
-          <!-- title block -->
-          <g class="plan__g plan__tb">
+          <g class="sx s3">
+            <line class="dw-thin" x1="160" y1="112" x2="840" y2="112"/>
+            <line class="dw-thin" x1="160" y1="104" x2="160" y2="128"/><line class="dw-thin" x1="600" y1="104" x2="600" y2="128"/><line class="dw-thin" x1="840" y1="104" x2="840" y2="128"/>
+            <line class="dw-tick" x1="154" y1="118" x2="166" y2="106"/><line class="dw-tick" x1="594" y1="118" x2="606" y2="106"/><line class="dw-tick" x1="834" y1="118" x2="846" y2="106"/>
+            <text class="dw-t dw-t--c" x="380" y="104">4400</text><text class="dw-t dw-t--c" x="720" y="104">2400</text>
+            <line class="dw-thin" x1="118" y1="150" x2="118" y2="590"/>
+            <line class="dw-thin" x1="110" y1="150" x2="134" y2="150"/><line class="dw-thin" x1="110" y1="590" x2="134" y2="590"/>
+            <line class="dw-tick" x1="112" y1="156" x2="124" y2="144"/><line class="dw-tick" x1="112" y1="596" x2="124" y2="584"/>
+            <text class="dw-t dw-t--c" x="104" y="374" transform="rotate(-90 104 370)">4400</text>
+          <line class="dw-thin" x1="430" y1="340" x2="470" y2="300"/><rect class="dw-tag" x="438" y="288" width="64" height="24"/><text class="dw-t dw-t--c" x="470" y="305">WD-01</text><line class="dw-thin" x1="740" y1="350" x2="760" y2="330"/><rect class="dw-tag" x="728" y="318" width="64" height="24"/><text class="dw-t dw-t--c" x="760" y="335">TL-02</text><line class="dw-thin" x1="612" y1="450" x2="650" y2="420"/><rect class="dw-tag" x="618" y="408" width="64" height="24"/><text class="dw-t dw-t--c" x="650" y="425">PT-03</text><line class="dw-thin" x1="300" y1="158" x2="300" y2="190"/><circle class="dw-bub" cx="300" cy="203" r="16"/><line class="dw-thin" x1="284" y1="203" x2="316" y2="203"/><text class="dw-t dw-t--c dw-t--s" x="300" y="199">1</text><text class="dw-t dw-t--c dw-t--s" x="300" y="214">A-301</text>
             <rect class="dw-thin" x="560" y="640" width="400" height="56"/>
             <line class="dw-thin" x1="700" y1="640" x2="700" y2="696"/>
             <line class="dw-thin" x1="820" y1="640" x2="820" y2="696"/>
@@ -317,8 +302,25 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);d.classList.add("js");
             <text class="dw-t dw-t--s" x="714" y="660">SHEET</text><text class="dw-t" x="714" y="684">A-00</text>
             <text class="dw-t dw-t--s" x="834" y="660">VERSION</text><text class="dw-t dw-t--red" x="834" y="684" data-ver>2.x</text>
           </g>
+          <g class="sx s4">
+            <path class="dw-red" d="M806 352a13 13 0 0 1 22-6a13 13 0 0 1 24 4a13 13 0 0 1 8 22a13 13 0 0 1-6 23a13 13 0 0 1-23 6a13 13 0 0 1-24-4a13 13 0 0 1-8-22a13 13 0 0 1 7-23z"/>
+            <line class="dw-red" x1="866" y1="362" x2="914" y2="300"/>
+            <circle class="dw-red" cx="932" cy="282" r="24"/>
+            <line class="dw-red" x1="908" y1="282" x2="956" y2="282"/>
+            <text class="dw-t dw-t--c dw-t--red" x="932" y="276">03</text>
+            <text class="dw-t dw-t--c dw-t--red dw-t--s" x="932" y="296">A-301</text>
+            <path class="dw-plus" d="M916 360h8v8h8v8h-8v8h-8v-8h-8v-8h8z"/>
+          <path class="dw-red" d="M520 690L536 662L552 690Z"/><text class="dw-t dw-t--c dw-t--red dw-t--s" x="536" y="686">1</text></g>
+          <text class="dw-stage" x="64" y="690" data-stage>2.x</text>
         </svg>
           </figure>
+          <div class="story__cap" aria-live="polite">
+            <p data-cap="1"><span data-lang="en">New at this stage: existing walls and openings, room zoning</span><span data-lang="zh">本阶段新增：原始墙体与门窗、空间分区</span><span data-lang="hant">本階段新增：原始牆體與門窗、空間分區</span></p>
+            <p data-cap="2"><span data-lang="en">New at this stage: furniture layout, ceiling and lighting, floor materials</span><span data-lang="zh">本阶段新增：家具布置、天花吊顶与灯位、地面材料</span><span data-lang="hant">本階段新增：家具佈置、天花吊頂與燈位、地面材料</span></p>
+            <p data-cap="3"><span data-lang="en">New at this stage: dimensions, material codes, detail references, title block</span><span data-lang="zh">本阶段新增：尺寸标注、物料编码、节点索引、图签</span><span data-lang="hant">本階段新增：尺寸標註、物料編碼、節點索引、圖簽</span></p>
+            <p data-cap="4"><span data-lang="en">New at this stage: a design change, clouded and numbered, issued as version 2.1</span><span data-lang="zh">本阶段新增：设计变更，云线圈出、编号留痕，出 2.1 版</span><span data-lang="hant">本階段新增：設計變更，雲線圈出、編號留痕，出 2.1 版</span></p>
+          </div>
+          </div>
         </div>
       </div>
       <p class="mt-m reveal"><a class="link" href="process.html"><span data-lang="en">See the four stages in detail</span><span data-lang="zh">查看四个阶段的详细工作流</span><span data-lang="hant">查看四個階段的詳細工作流</span> →</a></p>

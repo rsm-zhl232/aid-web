@@ -671,18 +671,44 @@ header[data-hdr]{ view-transition-name:site-header; }
 .story__t{ margin-top:16px; font-size:clamp(22px,2.2vw,30px); font-weight:600; line-height:1.3; }
 .story__d{ margin-top:12px; font-size:16px; line-height:1.8; color:var(--muted); max-width:30em; }
 .story__stage{ position:relative; }
-.story__sheet{ position:sticky; top:calc(68px + clamp(32px,8vh,96px)); }
-.plan--story .plan__g{ animation:none; opacity:1; transition:opacity .6s var(--ease), transform .6s var(--ease); }
-.plan--story[data-at="1"] :is(.plan__furn,.plan__dims,.plan__tb,.plan__red),
-.plan--story[data-at="2"] :is(.plan__dims,.plan__tb,.plan__red),
-.plan--story[data-at="3"] .plan__red{ opacity:0; transform:translateY(6px); }
+.story__pin{ position:sticky; top:calc(68px + clamp(24px,6vh,72px)); }
+
+/* Story layers. s1 walls/openings · s1z room zoning · s2 layout, ceiling,
+   floor · s3 dimensions, codes, details, title block · s4 the change.
+   Each stage: its own layer is drawn in brick red (and drawn on by
+   site.js), earlier layers drop back to a pale grey, later ones are hidden.
+   With no stage set (no JS), everything shows in normal ink. */
+.plan--story .sx{ transition:opacity .6s var(--ease); }
+.plan--story .sx *{ transition:stroke .6s var(--ease), fill .6s var(--ease), stroke-width .6s var(--ease); }
+.plan--story .s1z{ opacity:0; }
+.plan--story[data-at="1"] .s1z{ opacity:1; }
+.plan--story[data-at="1"] :is(.s2,.s3,.s4),
+.plan--story[data-at="2"] :is(.s3,.s4),
+.plan--story[data-at="3"] .s4{ opacity:0; }
+.plan--story[data-at="2"] .s1,
+.plan--story[data-at="3"] :is(.s1,.s2),
+.plan--story[data-at="4"] :is(.s1,.s2,.s3){ opacity:.28; }
+.plan--story[data-at="2"] .s2 :is(.dw-line,.dw-thin,.dw-mat),
+.plan--story[data-at="3"] .s3 :is(.dw-line,.dw-thin,.dw-tick,.dw-bub,.dw-tag){ stroke:var(--brand); stroke-width:2; }
+.plan--story[data-at="3"] .s3 .dw-t{ fill:var(--brand); }
+.plan--story[data-at="2"] .s2 .dw-mat{ stroke-width:1; }
+.plan .dw-mat{ fill:none; stroke:#C9C6BF; stroke-width:.7; }
+.plan .dw-zone{ fill:color-mix(in srgb, var(--brand) 12%, transparent); stroke:var(--brand); stroke-width:1.6; stroke-dasharray:8 6; }
+.plan .dw-zt{ font-family:var(--font-sans); font-size:26px; font-weight:700; letter-spacing:.08em; fill:var(--brand); text-anchor:middle; }
+.plan .dw-tag{ fill:var(--bg-2); stroke:var(--graphite); stroke-width:1; }
+.plan .dw-stage{ font-family:var(--font-mono); font-size:76px; font-weight:600; fill:var(--brand); }
+.story__cap{ margin-top:14px; min-height:3.2em; }
+.story__cap p{ display:none; font-size:14.5px; line-height:1.6; color:var(--fg); padding-left:14px; border-left:3px solid var(--brand); }
+.story__cap p.is-active{ display:block; animation:capIn .45s var(--ease); }
+@keyframes capIn{ from{ opacity:0; transform:translateY(4px); } to{ opacity:1; transform:none; } }
 @media (max-width:960px){
   .story{ grid-template-columns:1fr; gap:0; }
   .story__stage{ order:-1; position:sticky; top:68px; z-index:2; background:var(--bg); padding-block:10px; }
-  .story__sheet{ position:static; max-width:520px; }
+  .story__pin{ position:static; max-width:520px; }
+  .story__cap{ min-height:2.6em; margin-top:8px; }
   .story__step,.story__step:first-child,.story__step:last-child{ min-height:58vh; padding-top:0; justify-content:center; }
 }
-@media (prefers-reduced-motion:reduce){ .story__step{ opacity:1; } .plan--story .plan__g{ transition:none; } }
+@media (prefers-reduced-motion:reduce){ .story__step{ opacity:1; } .plan--story .sx,.plan--story .sx *{ transition:none; } .story__cap p.is-active{ animation:none; } }
 
 /* Words light up as the paragraph scrolls through (site.js initScrub). */
 .is-scrub{ color:var(--fg); }
@@ -714,9 +740,9 @@ header[data-hdr]{ view-transition-name:site-header; }
 @media (max-width:760px){ .subnav__toc{ display:none; } }
 
 /* While the sub-nav is out, sticky things sit below it, not under it. */
-.subnav-on .story__sheet{ top:calc(120px + clamp(24px,6vh,72px)); }
+.subnav-on .story__pin{ top:calc(120px + clamp(16px,4vh,48px)); }
 @media (max-width:960px){ .subnav-on .story__stage{ top:120px; } }
-.story__sheet,.story__stage{ transition:top .4s var(--ease); }
+.story__pin,.story__stage{ transition:top .4s var(--ease); }
 
 /* In-page anchors land below the header and the sub-nav. */
 section[id]{ scroll-margin-top:132px; }
