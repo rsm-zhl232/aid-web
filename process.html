@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-lang="zh">
+<html lang="zh-CN" data-lang="zh" data-title-en="How we work — AID" data-title-hant="工作流程 — AID 艾匠科技">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,20 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:title" content="工作流程 — AID 艾匠科技">
 <meta property="og:description" content="方案、扩初、施工图、施工配合四个阶段，每段都有交付物和确认单；修改有规则，出图前三级检查。">
+<meta property="og:url" content="https://rsm-zhl232.github.io/aid-web/process.html">
+<meta property="og:image" content="https://rsm-zhl232.github.io/aid-web/assets/img/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://rsm-zhl232.github.io/aid-web/process.html">
+<link rel="alternate" hreflang="zh-CN" href="https://rsm-zhl232.github.io/aid-web/process.html?lang=zh">
+<link rel="alternate" hreflang="zh-Hant" href="https://rsm-zhl232.github.io/aid-web/process.html?lang=hant">
+<link rel="alternate" hreflang="en" href="https://rsm-zhl232.github.io/aid-web/process.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://rsm-zhl232.github.io/aid-web/process.html">
+<meta name="theme-color" content="#1B1C1E">
 <link rel="icon" href="assets/img/aid-mark.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-512.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <script>
 /* Decide the language before first paint. assets/js/site.js repeats this
    logic (AID.pickLang / AID.applyLang) — if you change one, change the other. */
@@ -19,9 +32,7 @@ s=localStorage.getItem("aid-lang"),n=(navigator.language||"zh").toLowerCase(),
 l=k[q]?q:k[s]?s:/^zh-(tw|hk|mo|hant)/.test(n)?"hant":n.indexOf("en")===0?"en":"zh",d=document.documentElement;
 d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="preload" href="assets/fonts/plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
@@ -106,10 +117,37 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
     </div>
   </section>
 
+  <!-- ============ SAMPLE SPACE ============
+       Replace each placeholder frame with <img src="assets/img/sample/…" alt="…">. -->
+  <section class="section" id="sample">
+    <div class="wrap">
+      <p class="eyebrow reveal"><span class="num">02</span>
+        <span data-lang="en">One model, three deliverables</span><span data-lang="zh">一个空间，三份成果</span><span data-lang="hant">一個空間，三份成果</span></p>
+      <div class="grid grid--sidecar">
+        <h2 class="h1 reveal">
+          <span data-lang="en">Change it once, and all three change together</span>
+          <span data-lang="zh">改一处，三份成果一起变</span><span data-lang="hant">改一處，三份成果一起變</span>
+        </h2>
+        <p class="lede reveal" data-delay="60">
+          <span data-lang="en">The same model produces the drawings and the materials schedule, so they never drift apart. Here is one space, shown three ways.</span>
+          <span data-lang="zh">施工图和物料表都由同一个模型生成，彼此不会对不上。下面是同一个空间的三份成果。</span><span data-lang="hant">施工圖和物料表都由同一個模型生成，彼此不會對不上。下面是同一個空間的三份成果。</span>
+        </p>
+      </div>
+      <div class="shots mt-l">
+        <figure class="shot reveal"><div class="shot__frame shot--todo"><span class="mono"><span data-lang="en">Model view · to be supplied</span><span data-lang="zh">模型截图 · 待补</span><span data-lang="hant">模型截圖 · 待補</span></span></div>
+          <figcaption><b><span data-lang="en">The model</span><span data-lang="zh">三维模型</span><span data-lang="hant">三維模型</span></b><span><span data-lang="en">The space at 2.0, construction depth.</span><span data-lang="zh">同一空间的 2.0 施工图模型。</span><span data-lang="hant">同一空間的 2.0 施工圖模型。</span></span></figcaption></figure>
+        <figure class="shot reveal"><div class="shot__frame shot--todo"><span class="mono"><span data-lang="en">Drawing sheet · to be supplied</span><span data-lang="zh">施工图 · 待补</span><span data-lang="hant">施工圖 · 待補</span></span></div>
+          <figcaption><b><span data-lang="en">The drawings</span><span data-lang="zh">施工图</span><span data-lang="hant">施工圖</span></b><span><span data-lang="en">Generated directly from the model.</span><span data-lang="zh">由模型直接生成的施工图。</span><span data-lang="hant">由模型直接生成的施工圖。</span></span></figcaption></figure>
+        <figure class="shot reveal"><div class="shot__frame shot--todo"><span class="mono"><span data-lang="en">Materials schedule · to be supplied</span><span data-lang="zh">物料表 · 待补</span><span data-lang="hant">物料表 · 待補</span></span></div>
+          <figcaption><b><span data-lang="en">The materials schedule</span><span data-lang="zh">物料表</span><span data-lang="hant">物料表</span></b><span><span data-lang="en">Taken from the model data.</span><span data-lang="zh">由模型数据生成的物料表。</span><span data-lang="hant">由模型數據生成的物料表。</span></span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ REVISIONS ============ -->
   <section class="section" id="revisions">
     <div class="wrap">
-      <p class="eyebrow reveal"><span class="num">02</span>
+      <p class="eyebrow reveal"><span class="num">03</span>
         <span data-lang="en">Revisions</span><span data-lang="zh">修改机制</span><span data-lang="hant">修改機制</span></p>
       <div class="grid grid--sidecar">
         <h2 class="h1 reveal">
@@ -165,7 +203,7 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
   <!-- ============ QUALITY ============ -->
   <section class="section" data-surface="alt" id="quality">
     <div class="wrap">
-      <p class="eyebrow reveal"><span class="num">03</span>
+      <p class="eyebrow reveal"><span class="num">04</span>
         <span data-lang="en">Quality checks</span><span data-lang="zh">交付检查</span><span data-lang="hant">交付檢查</span></p>
       <div class="grid grid--sidecar">
         <div>

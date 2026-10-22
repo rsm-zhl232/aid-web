@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-lang="zh">
+<html lang="zh-CN" data-lang="zh" data-title-en="Contact — AID" data-title-hant="聯絡我們 — AID 艾匠科技">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,20 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:title" content="联系我们 — AID 艾匠科技">
 <meta property="og:description" content="先选一个空间试做，按标准价收费；签整个项目时试做费从合同里抵扣。">
+<meta property="og:url" content="https://rsm-zhl232.github.io/aid-web/contact.html">
+<meta property="og:image" content="https://rsm-zhl232.github.io/aid-web/assets/img/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://rsm-zhl232.github.io/aid-web/contact.html">
+<link rel="alternate" hreflang="zh-CN" href="https://rsm-zhl232.github.io/aid-web/contact.html?lang=zh">
+<link rel="alternate" hreflang="zh-Hant" href="https://rsm-zhl232.github.io/aid-web/contact.html?lang=hant">
+<link rel="alternate" hreflang="en" href="https://rsm-zhl232.github.io/aid-web/contact.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://rsm-zhl232.github.io/aid-web/contact.html">
+<meta name="theme-color" content="#1B1C1E">
 <link rel="icon" href="assets/img/aid-mark.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-512.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <script>
 /* Decide the language before first paint. assets/js/site.js repeats this
    logic (AID.pickLang / AID.applyLang) — if you change one, change the other. */
@@ -19,9 +32,7 @@ s=localStorage.getItem("aid-lang"),n=(navigator.language||"zh").toLowerCase(),
 l=k[q]?q:k[s]?s:/^zh-(tw|hk|mo|hant)/.test(n)?"hant":n.indexOf("en")===0?"en":"zh",d=document.documentElement;
 d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="preload" href="assets/fonts/plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
@@ -58,6 +69,11 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
           <div><dt><span data-lang="en">Phone</span><span data-lang="zh">电话</span><span data-lang="hant">電話</span></dt><dd data-contact="phone"></dd></div>
           <div><dt><span data-lang="en">Office</span><span data-lang="zh">办公地点</span><span data-lang="hant">辦公地點</span></dt><dd data-contact="address"></dd></div>
         </dl>
+
+        <h2 class="h3 mt-l reveal"><span data-lang="en">Scan to message us</span><span data-lang="zh">扫码直接联系</span><span data-lang="hant">掃碼直接聯絡</span></h2>
+        <div class="qr reveal" data-qr></div>
+
+        <div class="brochure mt-l reveal" data-brochure></div>
       </div>
 
       <form class="reveal" data-delay="120" id="aid-form">
@@ -98,6 +114,7 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
           <button class="btn btn--primary" type="submit">
             <span data-lang="en">Send</span><span data-lang="zh">提交</span><span data-lang="hant">提交</span> <span class="arw">→</span></button>
         </div>
+        <p class="small mt-m" style="color:var(--faint)"><span data-lang="en">We use what you send only to reply and discuss the project. See our </span><span data-lang="zh">您提交的信息仅用于回复咨询、沟通项目合作，详见</span><span data-lang="hant">您提交的資訊僅用於回覆諮詢、溝通項目合作，詳見</span><a class="link" href="privacy.html"><span data-lang="en">privacy notice</span><span data-lang="zh">隐私说明</span><span data-lang="hant">隱私說明</span></a><span data-lang="en">.</span><span data-lang="zh">。</span><span data-lang="hant">。</span></p>
         <p class="small form-note mt-s" role="status" hidden style="color:var(--accent)"></p>
       </form>
     </div>

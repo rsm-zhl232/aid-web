@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-lang="zh">
+<html lang="zh-CN" data-lang="zh" data-title-en="About AID" data-title-hant="關於 AID — 艾匠科技">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,20 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:title" content="关于 AID — 艾匠科技">
 <meta property="og:description" content="AID 艾匠科技，AI-Driven Design & Delivery，大师的数字建造团队，天宫开物旗下品牌。">
+<meta property="og:url" content="https://rsm-zhl232.github.io/aid-web/about.html">
+<meta property="og:image" content="https://rsm-zhl232.github.io/aid-web/assets/img/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://rsm-zhl232.github.io/aid-web/about.html">
+<link rel="alternate" hreflang="zh-CN" href="https://rsm-zhl232.github.io/aid-web/about.html?lang=zh">
+<link rel="alternate" hreflang="zh-Hant" href="https://rsm-zhl232.github.io/aid-web/about.html?lang=hant">
+<link rel="alternate" hreflang="en" href="https://rsm-zhl232.github.io/aid-web/about.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://rsm-zhl232.github.io/aid-web/about.html">
+<meta name="theme-color" content="#1B1C1E">
 <link rel="icon" href="assets/img/aid-mark.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-512.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <script>
 /* Decide the language before first paint. assets/js/site.js repeats this
    logic (AID.pickLang / AID.applyLang) — if you change one, change the other. */
@@ -19,9 +32,7 @@ s=localStorage.getItem("aid-lang"),n=(navigator.language||"zh").toLowerCase(),
 l=k[q]?q:k[s]?s:/^zh-(tw|hk|mo|hant)/.test(n)?"hant":n.indexOf("en")===0?"en":"zh",d=document.documentElement;
 d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="preload" href="assets/fonts/plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
@@ -173,10 +184,30 @@ d.setAttribute("data-lang",l);d.setAttribute("lang",k[l]);}catch(e){}})();
     </div>
   </section>
 
+  <!-- ============ TEAM ============
+       Cards are rendered from AID.team in assets/js/site.js. -->
+  <section class="section" id="team">
+    <div class="wrap">
+      <p class="eyebrow reveal"><span class="num">06</span>
+        <span data-lang="en">The team</span><span data-lang="zh">主理人与团队</span><span data-lang="hant">主理人與團隊</span></p>
+      <div class="grid grid--sidecar">
+        <h2 class="h1 reveal">
+          <span data-lang="en">The people behind AID</span>
+          <span data-lang="zh">站在大师背后的人</span><span data-lang="hant">站在大師背後的人</span>
+        </h2>
+        <p class="lede reveal" data-delay="60">
+          <span data-lang="en">The principals and project managers you'll actually work with. Your key contact stays the same from first meeting to final handover.</span>
+          <span data-lang="zh">您真正会打交道的主理人与项目经理。从第一次见面到最后交付，核心接口人不换。</span><span data-lang="hant">您真正會打交道的主理人與項目經理。從第一次見面到最後交付，主要聯絡人不換。</span>
+        </p>
+      </div>
+      <div class="people mt-l reveal" data-team></div>
+    </div>
+  </section>
+
   <!-- ============ PARENT ============ -->
   <section class="section" data-surface="alt" id="group">
     <div class="wrap">
-      <p class="eyebrow reveal"><span class="num">06</span>
+      <p class="eyebrow reveal"><span class="num">07</span>
         <span data-lang="en">Who stands behind AID</span><span data-lang="zh">背后是谁</span><span data-lang="hant">背後是誰</span></p>
       <div class="grid grid--sidecar">
         <h2 class="h2 reveal">

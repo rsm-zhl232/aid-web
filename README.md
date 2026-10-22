@@ -17,14 +17,22 @@ python3 -m http.server 8080      # 然后访问 http://localhost:8080
 ```
 index.html       首页：定位、出发点、加法不是减法、传统配合对比、一辅两主、八项承诺、合作大师、服务分层、技术底座
 services.html    服务：一辅两主、三档服务包、AI 能力、服务标准
-process.html     工作流程：启动会、四阶段（0.5 / 1.0 / 2.0 / 2.x）、修改机制、出图前检查
-technology.html  技术与团队：DFC/TAI/ADC/飞舟/QDC/DRP、项目组织、四库数据资产
-about.html       关于：命名释义、标志释义、使命与分工、核心理念、4C·4R、天宫开物背景
-contact.html     联系：先试做一个空间、初次沟通三问、表单（mailto）
+process.html     工作流程：启动会、四阶段（0.5 / 1.0 / 2.0 / 2.x）、样板空间（图片位）、修改机制、出图前检查
+technology.html  技术与团队：DFC/TAI/ADC/飞舟/QDC/DRP、界面截图（图片位）、项目组织、四库数据资产
+about.html       关于：命名释义、标志释义、使命与分工、核心理念、4C·4R、主理人与团队、天宫开物背景
+faq.html         常见问题：10 问，依据手册 8.1 的标准回答
+trial.html       试做一个空间：五步流程、交付什么、费用与周期
+contact.html     联系：初次沟通三问、联系方式、二维码、宣传手册下载、表单
+privacy.html     隐私说明（个人信息保护法要求的告知）
+sitemap.xml / robots.txt   搜索引擎用
 
 assets/css/main.css   设计系统。顶部 tokens：砖红 #A8342B、石墨灰 #2B2C2F、墨 #1B1C1E、纸 #F2F1EE
 assets/js/site.js     页头、页脚、导航、语言切换（简 / 繁 / EN）、联系方式、合作大师、表单
-assets/img/           aid-logo.svg（浅底）、aid-logo-white.svg（深底）、aid-mark.svg（图标 / favicon）
+assets/img/           aid-logo.svg（浅底）、aid-logo-white.svg（深底）、aid-mark.svg（图标）、
+                      favicon-512.png / apple-touch-icon.png（手机图标）、og-cover.jpg（微信等转发时的分享图）
+assets/fonts/         IBM Plex Mono（代码等宽字体，自带，OFL 免费商用）。中文用系统字体，不下载网络字体
+tools/build-hant.py   简体 → 繁體生成脚本
+tools/set-domain.sh   换正式域名时运行一次
 ```
 
 ## 三种语言
@@ -70,9 +78,42 @@ AID.partners = [
 `hant` / `en` 可不填（自动用简体）；`studio`、`city`、`logo` 都是可选的。Logo 放进 `assets/img/partners/`。
 列表为空时显示 4 张「【待补】」占位卡，数量由 `PARTNER_SLOTS` 控制。
 
-## 待补
+## 上线清单
 
-- 联系邮箱、电话：在 `assets/js/site.js` 顶部 `AID.contact` 填写（地址已填：东方河套科技大厦 7 楼）。留空时页面显示「【待补】」，表单提示邮箱未开通
-- 正式域名、ICP 备案号（页脚）、分享图 og:image
-- PNG 版 favicon（目前只有 SVG）
-- 合作大师名单与 Logo（见上一节）
+### 已完成
+
+- 中文用系统字体、去掉 Google Fonts（Google 在大陆被墙，原来会导致国内白屏等待）
+- 常见问题、试做、隐私说明三页；团队、样板空间、界面截图、二维码、宣传手册、合作大师板块（均为占位框架）
+- 微信分享图、手机图标、canonical、hreflang、结构化数据、sitemap、robots
+- 繁體 / 英文的网页标题随语言切换
+- 表单支持接入在线表单服务；访问统计（百度统计）开关；公司全称与备案号显示
+
+### 需要提供的信息（填好即生效，大多数在 `assets/js/site.js` 顶部）
+
+| 内容 | 填在哪里 | 现在的样子 |
+|---|---|---|
+| 联系邮箱、电话 | `AID.contact` | 显示【待补】，表单无法发送 |
+| 企业微信 / 公众号二维码 | 图片放 `assets/img/qr/`，路径填 `AID.qr` | 灰色 QR 占位 |
+| 公司注册全称 | `AID.company.legalName` | 页脚不显示；隐私页显示【待补】 |
+| ICP 备案号 | `AID.company.icp` | 不显示（国内服务器上线后填） |
+| 合作大师名单、Logo、一句评价 | `AID.partners`（图片放 `assets/img/partners/`） | 4 张【待补】卡；`PARTNER_SLOTS = 0` 可先隐藏整节 |
+| 主理人 / 项目经理照片与简介 | `AID.team`（照片放 `assets/img/team/`） | 3 张【待补】卡；`TEAM_SLOTS = 0` 可先隐藏 |
+| 宣传手册 PDF 与封面 | `AID.brochure` | 显示「制作中」 |
+| 样板空间三张图（模型 / 施工图 / 物料表） | `process.html` 的 `#sample`，把占位框换成 `<img>` | 斜纹占位框 |
+| DFC、飞舟界面截图 | `technology.html` 的界面截图两格 | 斜纹占位框 |
+| 在线表单服务地址 | `AID.formEndpoint`（接收 JSON POST） | 退回到打开访客的邮件程序 |
+| 百度统计站点 ID | `AID.analytics.baidu` | 未开启 |
+
+### 需要决定的事
+
+- **公开承诺请老板确认**：八项承诺、「确认模型后 2 天出图」、「变更有规则」、试做费可抵扣。手册里部分条目仍标「待确认」，
+  例如大项目的出图时间（手册建议「150 张以内 2 个工作日，每多 100 张顺延 1 天」）。客户会把网站当合同依据，建议法务也看一眼。
+- **托管与域名**：GitHub Pages 在国内不稳定。正式上线建议放腾讯云 / 阿里云 + CDN，绑定公司域名，办 ICP 备案；
+  然后运行 `sh tools/set-domain.sh https://新域名/`，再向百度搜索资源平台、Google Search Console 提交 sitemap。
+- **繁體用词**：现在「項目」两地通用，若主要面向台湾，可在 `tools/build-hant.py` 加一条 项目→專案。
+
+### 上线前检查
+
+- 在**微信内置浏览器**、iPhone、安卓手机上实际打开一遍（大师基本在微信里点链接）
+- 请港台同事看繁體，请英文好的人看英文
+- 把占位内容补齐，或把对应板块隐藏，确保线上没有【待补】

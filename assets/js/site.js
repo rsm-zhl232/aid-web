@@ -11,6 +11,7 @@ AID.nav = [
   { href: "process.html", en: "How we work", zh: "工作流程", hant: "工作流程" },
   { href: "technology.html", en: "Technology & team", zh: "技术与团队", hant: "技術與團隊" },
   { href: "about.html", en: "About AID", zh: "关于 AID", hant: "關於 AID" },
+  { href: "faq.html", en: "FAQ", zh: "常见问题", hant: "常見問題" },
 ];
 
 AID.footer = [
@@ -21,6 +22,7 @@ AID.footer = [
       { href: "services.html#packages", en: "Service packages", zh: "服务分层", hant: "服務分層" },
       { href: "services.html#ai", en: "AI in practice", zh: "AI 能力", hant: "AI 能力" },
       { href: "services.html#standards", en: "Service standards", zh: "服务标准", hant: "服務標準" },
+      { href: "trial.html", en: "Trial on one space", zh: "试做一个空间", hant: "試做一個空間" },
     ],
   },
   {
@@ -37,7 +39,9 @@ AID.footer = [
     links: [
       { href: "about.html", en: "About AID", zh: "关于 AID", hant: "關於 AID" },
       { href: "index.html#partners", en: "Our partners", zh: "合作大师", hant: "合作大師" },
+      { href: "faq.html", en: "FAQ", zh: "常见问题", hant: "常見問題" },
       { href: "contact.html", en: "Contact", zh: "联系我们", hant: "聯絡我們" },
+      { href: "privacy.html", en: "Privacy", zh: "隐私说明", hant: "隱私說明" },
       { href: "https://www.tgkw.com", en: "Tiangong Kaiwu", zh: "天宫开物", hant: "天宮開物", ext: true },
     ],
   },
@@ -56,15 +60,53 @@ AID.contact = {
   },
 };
 
+/* WeChat QR codes, shown in the footer and on the contact page. In mainland
+   B2B, a QR code to scan gets far more replies than a form. Put the image in
+   assets/img/qr/ and set img; entries with no img show a placeholder. */
+AID.qr = [
+  { img: "", label: { en: "WeChat Work · talk to us", zh: "企业微信 · 直接咨询", hant: "企業微信 · 直接諮詢" } },
+  { img: "", label: { en: "WeChat official account", zh: "公众号 · AID 艾匠科技", hant: "公眾號 · AID 艾匠科技" } },
+];
+
+/* Registered company name and ICP licence number, for the footer. Both stay
+   hidden until filled in (the ICP number is required once the site is hosted
+   in mainland China). */
+AID.company = {
+  legalName: { en: "", zh: "", hant: "" },
+  icp: "",
+};
+
+/* Contact form backend. Empty = the form falls back to opening the visitor's
+   email app (unreliable). Set it to an endpoint that accepts a JSON POST
+   (e.g. a form service or a cloud function) and the form sends directly. */
+AID.formEndpoint = "";
+
+/* Visitor analytics. Paste the site ID from tongji.baidu.com (the hex string
+   in its hm.js?xxxx snippet) to switch Baidu Analytics on. */
+AID.analytics = { baidu: "" };
+
+/* The people behind AID, shown on the About page (#team). One entry each:
+     { name: {zh}, role: {zh}, bio: {zh}, photo: "assets/img/team/xxx.jpg" }
+   While empty, TEAM_SLOTS placeholder cards show; set it to 0 to hide the
+   section instead. */
+AID.team = [];
+var TEAM_SLOTS = 3;
+
+/* Downloadable brochure (handbook 8.2), shown on the contact page. Set pdf to
+   the file path once it exists; cover is an optional image. */
+AID.brochure = { pdf: "", cover: "" };
+
 /* Partner studios, shown on the home page (#partners). One entry per studio:
      {
        name:   { zh: "某某", hant: "某某", en: "Name" },         // the designer
        studio: { zh: "某某设计", hant: "某某設計", en: "Studio" }, // optional
        city:   { zh: "深圳", hant: "深圳", en: "Shenzhen" },       // optional
        logo:   "assets/img/partners/xxx.png",                       // optional
+       quote:  { zh: "他们自己说的一句话" },                        // optional
      }
    hant / en may be left out: they fall back to zh. While the list is empty,
-   PARTNER_SLOTS placeholder cards marked "to be supplied" show instead. */
+   PARTNER_SLOTS placeholder cards marked "to be supplied" show instead; set
+   it to 0 to hide the section until there is something to show. */
 AID.partners = [];
 var PARTNER_SLOTS = 4;
 
@@ -108,6 +150,11 @@ AID.applyLang = function (lang) {
   var d = document.documentElement;
   d.setAttribute("data-lang", lang);
   d.setAttribute("lang", { zh: "zh-CN", hant: "zh-Hant", en: "en" }[lang] || "zh-CN");
+  /* <title> is written in 简体; data-title-en / data-title-hant on <html>
+     carry the other two. */
+  if (!d.dataset.titleZh) d.dataset.titleZh = document.title;
+  var t = lang === "zh" ? d.dataset.titleZh : d.getAttribute("data-title-" + lang);
+  if (t) document.title = t;
 };
 
 AID.applyLang(AID.pickLang());
@@ -253,13 +300,105 @@ function renderFooter() {
     '<span data-lang="en">You focus on the design. We deliver it.</span>' +
     '<span data-lang="zh">大师专注创意，我们负责落地。</span><span data-lang="hant">大師專注創意，我們負責落地。</span></p>' +
     '<p class="small" style="margin-top:16px;color:#8E9093">' + contactLine() + "</p>" +
+    '<div class="qr" data-qr></div>' +
     '</div><div class="ftr__cols">' + cols + "</div></div>" +
     '<div class="ftr__btm">' +
     "<span>© " + new Date().getFullYear() +
     ' <span data-lang="en">AID · A Tiangong Kaiwu brand</span>' +
     '<span data-lang="zh">艾匠科技 AID · 天宫开物旗下品牌</span><span data-lang="hant">艾匠科技 AID · 天宮開物旗下品牌</span></span>' +
-    "<span>AI-Driven Design &amp; Delivery</span>" +
+    legalLine() +
     "</div></div>";
+}
+
+/* Registered name and ICP number, shown only once they are filled in. */
+function legalLine() {
+  var c = AID.company, bits = [];
+  if (c.legalName && c.legalName.zh) bits.push(AID.bi(c.legalName));
+  if (c.icp)
+    bits.push('<a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">' + AID.esc(c.icp) + "</a>");
+  bits.push("AI-Driven Design &amp; Delivery");
+  return "<span>" + bits.join(" &nbsp;·&nbsp; ") + "</span>";
+}
+
+/* ---- QR codes ----------------------------------------------------------- */
+function renderQR() {
+  document.querySelectorAll("[data-qr]").forEach(function (host) {
+    host.innerHTML = AID.qr
+      .map(function (q) {
+        var img = q.img
+          ? '<img src="' + AID.esc(q.img) + '" alt="" loading="lazy">'
+          : '<span class="qr__ph">QR</span>';
+        return "<figure>" + img + "<figcaption>" + AID.bi(q.label) + "</figcaption></figure>";
+      })
+      .join("");
+  });
+}
+
+/* ---- Team --------------------------------------------------------------- */
+function renderTeam() {
+  var host = document.querySelector("[data-team]");
+  if (!host) return;
+  var list = AID.team || [];
+  if (!list.length && !TEAM_SLOTS) {
+    var sec = host.closest("section");
+    if (sec) sec.hidden = true;
+    return;
+  }
+  if (!list.length) {
+    var ph =
+      '<figure class="person person--todo"><div class="person__photo"><span class="mono">PHOTO</span></div>' +
+      "<figcaption><b>" + AID.todo() + '</b><span class="person__role">' +
+      AID.bi({ en: "Role", zh: "职务", hant: "職務" }) + "</span></figcaption></figure>";
+    host.innerHTML = new Array(TEAM_SLOTS + 1).join(ph);
+    return;
+  }
+  host.innerHTML = list
+    .map(function (p) {
+      var photo = p.photo
+        ? '<img src="' + AID.esc(p.photo) + '" alt="" loading="lazy">'
+        : '<span class="mono">PHOTO</span>';
+      return (
+        '<figure class="person"><div class="person__photo">' + photo + "</div><figcaption>" +
+        "<b>" + AID.bi(p.name) + "</b>" +
+        (p.role ? '<span class="person__role">' + AID.bi(p.role) + "</span>" : "") +
+        (p.bio ? '<p class="person__bio">' + AID.bi(p.bio) + "</p>" : "") +
+        "</figcaption></figure>"
+      );
+    })
+    .join("");
+}
+
+/* ---- Brochure ----------------------------------------------------------- */
+function renderBrochure() {
+  var host = document.querySelector("[data-brochure]");
+  if (!host) return;
+  var b = AID.brochure;
+  var cover = b.cover
+    ? '<img src="' + AID.esc(b.cover) + '" alt="">'
+    : '<span class="mono">BROCHURE</span>';
+  var action = b.pdf
+    ? '<a class="btn btn--primary" href="' + AID.esc(b.pdf) + '" download>' +
+      AID.bi({ en: "Download PDF", zh: "下载 PDF", hant: "下載 PDF" }) + ' <span class="arw">↓</span></a>'
+    : '<p class="small">' + AID.bi({ en: "In preparation.", zh: "制作中，敬请期待。", hant: "製作中，敬請期待。" }) + "</p>";
+  host.innerHTML =
+    '<div class="brochure__cover">' + cover + "</div><div>" +
+    '<h3 class="h3">' + AID.bi({ en: "AID brochure", zh: "AID 宣传手册", hant: "AID 宣傳手冊" }) + "</h3>" +
+    '<p class="small mt-s">' + AID.bi({
+      en: "Who we are, how we work and the three service packages, in one file to share with your partners.",
+      zh: "AID 是谁、怎么做、三档服务，一份文件，方便转给您的合伙人。",
+      hant: "AID 是誰、怎麼做、三檔服務，一份文件，方便轉給您的合夥人。",
+    }) + "</p>" + '<div class="btn-row" style="margin-top:20px">' + action + "</div></div>";
+}
+
+/* ---- Analytics ---------------------------------------------------------- */
+function initAnalytics() {
+  var id = AID.analytics && AID.analytics.baidu;
+  if (!id) return;
+  window._hmt = window._hmt || [];
+  var s = document.createElement("script");
+  s.async = true;
+  s.src = "https://hm.baidu.com/hm.js?" + encodeURIComponent(id);
+  document.head.appendChild(s);
 }
 
 /* Fill [data-contact="email|phone|address"] slots on the contact page. */
@@ -276,6 +415,8 @@ function renderContactSlots() {
         ? '<a class="link" href="tel:' + (c.phoneIntl || c.phone) + '">' + AID.esc(c.phone) + "</a>"
         : AID.todo();
     else if (k === "address") el.innerHTML = AID.bi(c.address);
+    else if (k === "company")
+      el.innerHTML = AID.company.legalName && AID.company.legalName.zh ? AID.bi(AID.company.legalName) : AID.todo();
   });
 }
 
@@ -284,6 +425,11 @@ function renderPartners() {
   var host = document.querySelector("[data-partners]");
   if (!host) return;
   var list = AID.partners || [];
+  if (!list.length && !PARTNER_SLOTS) {
+    var sec = host.closest("section");
+    if (sec) sec.hidden = true;
+    return;
+  }
   if (!list.length) {
     var card =
       '<figure class="partner partner--todo"><div class="partner__logo"><span class="mono">LOGO</span></div>' +
@@ -303,6 +449,7 @@ function renderPartners() {
         '<figure class="partner"><div class="partner__logo">' + logo + "</div>" +
         "<figcaption><b>" + AID.bi(p.name) + "</b>" +
         (meta ? '<span class="partner__m">' + meta + "</span>" : "") +
+        (p.quote ? '<blockquote class="partner__q">' + AID.bi(p.quote) + "</blockquote>" : "") +
         "</figcaption></figure>"
       );
     })
@@ -348,6 +495,12 @@ function initContactForm() {
   if (!form) return;
   var note = form.querySelector(".form-note");
 
+  /* contact.html?topic=trial preselects the topic (used by the trial page). */
+  var want = new URLSearchParams(location.search).get("topic");
+  var topicSel = form.querySelector('[name="topic"]');
+  if (want && topicSel && topicSel.querySelector('option[value="' + want.replace(/[^a-z]/g, "") + '"]'))
+    topicSel.value = want;
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     var to = AID.contact.email;
@@ -357,6 +510,38 @@ function initContactForm() {
     };
     var sel = form.querySelector('[name="topic"]');
     var topic = sel ? sel.options[sel.selectedIndex].text : "";
+
+    if (AID.formEndpoint) {
+      var data = {};
+      ["name", "studio", "email", "phone", "message"].forEach(function (k) { data[k] = v(k); });
+      data.topic = topic;
+      data.lang = AID.lang();
+      data.page = location.href;
+      note.innerHTML = AID.pick({ zh: "正在提交…", hant: "正在送出…", en: "Sending…" });
+      note.hidden = false;
+      fetch(AID.formEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(data),
+      })
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          form.reset();
+          note.innerHTML = AID.pick({
+            zh: "已收到，我们会在 1 个工作日内联系您。",
+            hant: "已收到，我們會在 1 個工作日內聯絡您。",
+            en: "Thanks. We'll be in touch within one working day.",
+          });
+        })
+        .catch(function () {
+          note.innerHTML = AID.pick({
+            zh: "提交没有成功，请稍后再试，或用页面上的联系方式直接找我们。",
+            hant: "送出沒有成功，請稍後再試，或用頁面上的聯絡方式直接找我們。",
+            en: "That didn't go through. Please try again, or use the contact details on this page.",
+          });
+        });
+      return;
+    }
 
     if (!to) {
       note.innerHTML = AID.pick({
@@ -418,6 +603,10 @@ document.addEventListener("DOMContentLoaded", function () {
   renderFooter();
   renderContactSlots();
   renderPartners();
+  renderQR();
+  renderTeam();
+  renderBrochure();
+  initAnalytics();
   initContactForm();
   initReveal();
 });
