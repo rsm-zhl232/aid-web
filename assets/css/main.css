@@ -353,16 +353,14 @@ a.card:hover{ border-color:var(--fg); transform:translateY(-3px); }
 .stage__c{ border-top:1px solid var(--line); padding-top:12px; font-size:14.5px; font-weight:700; color:var(--accent); }
 
 /* ---- 15. Steps ---------------------------------------------------------- */
-.steps{ counter-reset:s; border-top:1px solid var(--line); }
-.steps > li{ counter-increment:s; display:grid;
-  grid-template-columns:64px minmax(0,3fr) minmax(0,6fr); gap:clamp(16px,3vw,40px);
+/* No 01 / 02 / 03 counters: rows are told apart by their headings and rules. */
+.steps{ border-top:1px solid var(--line); }
+.steps > li{ display:grid;
+  grid-template-columns:minmax(0,3fr) minmax(0,6fr); gap:clamp(16px,3vw,40px);
   padding-block:clamp(20px,2.4vw,30px); border-bottom:1px solid var(--line); align-items:start; }
-@media (max-width:820px){ .steps > li{ grid-template-columns:44px 1fr; } .steps > li > p{ grid-column:2; } }
-.steps > li::before{ content:counter(s,decimal-leading-zero);
-  font-family:var(--font-mono); font-size:13px; letter-spacing:.1em; color:var(--accent); padding-top:3px; }
+@media (max-width:820px){ .steps > li{ grid-template-columns:1fr; gap:6px; } }
 /* Heading-only rows (no description column), e.g. the contact page questions. */
-.steps--solo > li{ grid-template-columns:64px minmax(0,1fr); }
-@media (max-width:820px){ .steps--solo > li{ grid-template-columns:44px 1fr; } }
+.steps--solo > li{ grid-template-columns:minmax(0,1fr); }
 .steps h3{ font-size:clamp(17px,1.4vw,20px); font-weight:700; }
 .steps p{ color:var(--muted); font-size:15px; }
 
@@ -373,11 +371,11 @@ a.card:hover{ border-color:var(--fg); transform:translateY(-3px); }
 .split > div:last-child{ border-right:0; }
 @media (max-width:760px){ .split > div:nth-child(2){ border-right:0; } .split > div:nth-child(-n+2){ border-bottom:1px solid var(--line); } }
 .split p{ padding:clamp(18px,2vw,28px); }
-.split p + p{ background:#1B1C1E; color:#EDECE8; }
+.split p + p{ border-top:2px solid var(--brand); }
 .split small{ display:block; font-size:13px; color:var(--faint); margin-bottom:6px; }
-.split p + p small{ color:#8E9093; }
+.split p + p small{ color:var(--accent); }
 .split strong{ font-size:clamp(22px,2.4vw,34px); font-weight:700; }
-.split p + p strong{ color:#EDECE8; }
+.split p + p strong{ color:var(--brand); }
 
 /* ---- 17. Org chart ------------------------------------------------------ */
 .org{ display:grid; gap:12px; }
@@ -547,7 +545,7 @@ html[data-lang="zh"] .hero2__title,html[data-lang="hant"] .hero2__title{ letter-
    every page reads as one sheet of the set — A-01 services, A-02 process … */
 .phero--paper{ background:var(--bg); color:var(--fg); padding-top:clamp(120px,13vw,172px); padding-bottom:0; }
 .phero--paper .h1,.phero--paper .display{ font-weight:600; }
-.sheetbar{ margin-top:clamp(40px,5vw,72px); display:grid; grid-template-columns:auto auto minmax(0,1fr) auto;
+.sheetbar{ margin-top:clamp(40px,5vw,72px); display:grid; grid-template-columns:auto auto minmax(0,1fr);
   border:1px solid var(--line-strong); border-bottom:0; font-family:var(--font-mono); font-size:11px;
   letter-spacing:.1em; color:var(--faint); }
 .sheetbar > span{ padding:10px 16px; border-right:1px solid var(--line-strong); white-space:nowrap; }
@@ -597,12 +595,9 @@ a.card:hover{ transform:none; border-top-color:var(--brand); }
 
 /* Commitments: a two-column ruled list, no cards. */
 .plist{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:clamp(32px,5vw,80px);
-  counter-reset:p; border-top:1px solid var(--line); }
+  border-top:1px solid var(--line); }
 @media (max-width:760px){ .plist{ grid-template-columns:1fr; } }
-.plist li{ counter-increment:p; display:grid; grid-template-columns:40px minmax(0,1fr); column-gap:12px;
-  padding-block:clamp(16px,1.8vw,22px); border-bottom:1px solid var(--line); }
-.plist li::before{ content:counter(p,decimal-leading-zero); grid-row:span 2; font-family:var(--font-mono);
-  font-size:13px; color:var(--accent); padding-top:3px; }
+.plist li{ display:flex; flex-direction:column; padding-block:clamp(16px,1.8vw,22px); border-bottom:1px solid var(--line); }
 .plist b{ font-size:17px; font-weight:700; }
 .plist li > span{ font-size:14.5px; color:var(--muted); margin-top:4px; }
 
@@ -623,6 +618,15 @@ html[data-lang="zh"] .idx__label,html[data-lang="hant"] .idx__label{ font-family
 .cta2{ border-top:1px solid var(--line); }
 .cta2__in{ display:grid; grid-template-columns:minmax(0,6fr) minmax(0,5fr); gap:clamp(28px,5vw,80px); align-items:end; }
 @media (max-width:860px){ .cta2__in{ grid-template-columns:1fr; } }
+
+/* The creed (About page): set as type on paper, not as a dark slide of cards. */
+.creed{ font-size:clamp(28px,3.8vw,52px); line-height:1.35; font-weight:500; letter-spacing:.01em; color:var(--fg); max-width:22em; }
+html[data-lang="zh"] .creed,html[data-lang="hant"] .creed{ letter-spacing:.06em; line-height:1.5; }
+.creed__note{ margin-top:clamp(28px,3vw,40px); padding-left:20px; border-left:2px solid var(--brand);
+  font-size:clamp(16px,1.3vw,19px); line-height:1.8; color:var(--fg); max-width:40em; }
+
+/* Cards that no longer open with an index: the title leads. */
+.card > .card__t--top:first-child{ margin-top:0; }
 
 /* ---- 18. CTA band ------------------------------------------------------- */
 .cta{ position:relative; overflow:hidden; }
