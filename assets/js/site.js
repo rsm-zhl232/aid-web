@@ -41,7 +41,7 @@ AID.footer = [
       { href: "index.html#partners", en: "Our partners", zh: "合作大师", hant: "合作大師" },
       { href: "faq.html", en: "FAQ", zh: "常见问题", hant: "常見問題" },
       { href: "contact.html", en: "Contact", zh: "联系我们", hant: "聯絡我們" },
-      { href: "privacy.html", en: "Privacy", zh: "隐私说明", hant: "隱私說明" },
+      { href: "privacy.html", en: "Privacy Policy", zh: "隐私政策", hant: "隱私政策" },
       { href: "https://www.tgkw.com", en: "Tiangong Kaiwu", zh: "天宫开物", hant: "天宮開物", ext: true },
     ],
   },
@@ -306,8 +306,8 @@ function renderFooter() {
     '</div><div class="ftr__cols">' + cols + "</div></div>" +
     '<div class="ftr__btm">' +
     "<span>© " + new Date().getFullYear() +
-    ' <span data-lang="en">AID · A Tiangong Kaiwu brand</span>' +
-    '<span data-lang="zh">艾匠科技 AID · 天宫开物旗下品牌</span><span data-lang="hant">艾匠科技 AID · 天宮開物旗下品牌</span></span>' +
+    ' <span data-lang="en">AID. All rights reserved. A Tiangong Kaiwu brand.</span>' +
+    '<span data-lang="zh">艾匠科技 AID 版权所有 · 天宫开物旗下品牌</span><span data-lang="hant">艾匠科技 AID 版權所有 · 天宮開物旗下品牌</span></span>' +
     legalLine() +
     "</div></div>";
 }
@@ -532,14 +532,14 @@ function initContactForm() {
           note.innerHTML = AID.pick({
             zh: "已收到，我们会在 1 个工作日内联系您。",
             hant: "已收到，我們會在 1 個工作日內聯絡您。",
-            en: "Thanks. We'll be in touch within one working day.",
+            en: "Thanks. We’ll be in touch within one working day.",
           });
         })
         .catch(function () {
           note.innerHTML = AID.pick({
             zh: "提交没有成功，请稍后再试，或用页面上的联系方式直接找我们。",
             hant: "送出沒有成功，請稍後再試，或用頁面上的聯絡方式直接找我們。",
-            en: "That didn't go through. Please try again, or use the contact details on this page.",
+            en: "That didn’t go through. Please try again, or use the contact details on this page.",
           });
         });
       return;
@@ -549,7 +549,7 @@ function initContactForm() {
       note.innerHTML = AID.pick({
         zh: "联系邮箱尚未开通，表单暂时无法发送。",
         hant: "聯絡電子郵件尚未開通，表單暫時無法送出。",
-        en: "Our enquiry inbox isn't live yet, so this form can't send.",
+        en: "Our enquiry inbox isn’t live yet, so this form can’t send.",
       });
       note.hidden = false;
       return;
@@ -764,7 +764,7 @@ var SUBNAV = {
   "faq.html": { en: "FAQ", zh: "常见问题", hant: "常見問題", sheet: "A-05" },
   "trial.html": { en: "Trial on one space", zh: "试做一个空间", hant: "試做一個空間", sheet: "A-06" },
   "contact.html": { en: "Contact", zh: "联系我们", hant: "聯絡我們", sheet: "A-07" },
-  "privacy.html": { en: "Privacy", zh: "隐私说明", hant: "隱私說明", sheet: "A-08" },
+  "privacy.html": { en: "Privacy Policy", zh: "隐私政策", hant: "隱私政策", sheet: "A-08" },
 };
 /* Home page: the sub-nav is a table of contents for the page, with the
    section currently being read highlighted. Entries whose section is
